@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="用户在线监控" navigate="主页 &gt; 系统管理 &gt; 用户在线统计"
+	type="call" interface="true" databusid="OprOnline" transdataactionurl="/trans/TransDataAction.do"
+	async="true" pagesize="10" getterclassname="com.huateng.stl4j.getter.OprOnlineGetter">
+	<Include id="BankParam" />
+	<Fields>
+
+		<Field id="id" xpath="/id" desc="ID" edittype="text" datatype="int"
+			require="false" readonly="true" primary="true" size="10" method="None"
+			status="F" defaultValue="" />
+		<Field id="brhNoName" xpath="/brhNoName" desc="机构名称" tip="机构名称"
+			edittype="text" datatype="string" require="false" readonly="false"
+			primary="false" size="20" method="None" status="F" defaultValue="" />
+		<Field id="oprOnlineCount" xpath="/oprOnlineCount" desc="在线人数"
+			tip="在线人数" edittype="text" datatype="int" require="false" readonly="false"
+			primary="false" size="20" method="None" status="F" defaultValue="" />
+	</Fields>
+	<Parameters />
+	<Where>
+		<TextBox id="brhNoWhere" fieldname="brhNoWhere" datatype="string"
+			edittype="text" method="None" require="false" readonly="false" init="false"
+			default="" size="9" width="" desc="机构号" tip="机构号" index="1" />
+		<TextBox id="brhName" fieldname="brhName" datatype="string"
+			edittype="text" method="None" require="false" readonly="false" init="false"
+			default="" size="60" width="" desc="机构名称" tip="机构名称" index="2" />
+		<Option id="rsType" fieldname="rsType" desc="查询类型" tip="查询类型" size="10"
+			datatype="string" edittype="select" require="true" default="SI1"
+			translated="LIST:ALL,所有机构;SI1,有登录操作员;SI0,无登录操作员" index="3" />
+	</Where>
+	<Operations>
+		<Button id="btnOprOnlineRefresh" name="刷新" desc="刷新" url="#" />
+	</Operations>
+</CommQry>

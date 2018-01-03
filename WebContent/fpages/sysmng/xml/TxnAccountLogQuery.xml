@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="流水查询监控" navigate="主页 &gt; 系统管理 &gt; 流水查询监控"
+	type="call" interface="true" databusid="quartzManager"
+	transdataactionurl="/trans/TransDataAction.do" async="true"
+	pagesize="10" getterclassname="com.huateng.stl4j.getter.TxnAccountLogQueryGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="id" xpath="/id" desc="流水号" tip="流水号" size="10"
+			edittype="text" datatype="string" require="false" readonly="true" init="false" />
+		<Field id="txnDesc" xpath="/txnDesc" desc="交易名称" tip="交易名称" size="100"
+			edittype="text" datatype="string" require="false" readonly="true"
+			init="false" />
+		<Field id="accsystemCode" xpath="/accsystemCode" desc="接入渠道" tip="接入渠道" size="10"
+			edittype="select" datatype="string" require="false" readonly="true"
+			translated="LIST:APS,支付系统;TIPS,横联系统;BCS,卡前置;CBS,核心系统"
+			init="false" />
+		<Field id="taskId" xpath="/taskId" desc="TASK_ID" tip="ERR_PROC_TASK.ID" size="10"
+			edittype="text" datatype="int" require="false" readonly="true"
+			init="false" />
+		<Field id="missionId" xpath="/missionId" desc="MISSION_ID" tip="ERR_MISSION.ID" size="10"
+			edittype="text" datatype="int" require="false" readonly="true"
+			init="false" />
+		<Field id="batchId" xpath="/batchId" desc="BATCH_ID" tip="ERR_BATCH.ID" size="10"
+			edittype="text" datatype="int" require="false" readonly="true"
+			init="false" />
+		<Field id="stripId" xpath="/stripId" desc="STRIP_ID" tip="ERR_ACCT_STRIP.ID" size="10"
+			edittype="text" datatype="int" require="false" readonly="true"
+			init="false" />
+		<Field id="serverSeqnb" xpath="/serverSeqnb" size="8"
+			desc="核心流水" tip="核心流水" edittype="text" datatype="string"
+			require="false" readonly="true" init="false" />
+		<Field id="status" xpath="/status" desc="状态" tip="状态" size="10"
+			edittype="select" datatype="string" require="false" readonly="true"
+			translated="LIST:I,初始状态;E,出错;R,执行中;T,异常;F,成功"
+			init="false" />
+		<Field id="excuteTime" xpath="/excuteTime" size="10"
+			desc="耗时(毫秒)" tip="耗时(毫秒)" edittype="text" datatype="int"
+			require="false" readonly="true" init="false" />
+		<Field id="misc" xpath="/misc" desc="备注" size="256"
+			tip="备注" edittype="textarea" datatype="string" require="true"
+			readonly="false" init="false" />
+	</Fields>
+	<Parameters />
+	<Where>
+		<TextBox id="txnDate" fieldname="txnDate" datatype="date" size="20" desc="交易日期" colspan="4" edittype="select"
+			tip="交易日期" method="None" index="1" require="true" readOnly="false" />
+		<TextBox id="minTime" fieldname="minTime" datatype="int" size="10" desc="耗时(毫秒)&gt;=" edittype="text"
+			tip="耗时(毫秒)&gt;=" method="None" index="2" require="false" readOnly="false" />
+		<TextBox id="maxTime" fieldname="maxTime" datatype="int" size="10" desc="耗时(毫秒)&lt;=" edittype="text"
+			tip="耗时(毫秒)&lt;=" method="None" index="2" require="false" readOnly="false" />
+	</Where>
+	<Operations>
+	</Operations>
+</CommQry>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="机构管理" navigate="主页 &gt; 系统管理 &gt; 机构管理" type="call"
+	interface="true" pagesize="10" async="true" databusid="BranchTree"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.BranchTreeGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="brhNo" desc="机构号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="9" method="None"
+			status="F" default="" xpath="/brhNo" />
+
+		<Field id="brhName" desc="机构名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/brhName" />
+		
+		<Field id="brhClass" desc="机构级别" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="1" method="None"
+			status="F" default="" xpath="/brhClass" />
+			
+		<Field id="upBrhId" desc="上级机构" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/upBrhId"/>
+			
+		<Field id="_level_" desc="树形层次" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/level"/>
+			
+		<Field id="_canSelected_" desc="能否选择" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="1" method="None"
+			status="F" default="" xpath="/canSelected" />
+		
+		<Field id="_hasChild_" desc="是否有子结点" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="1" method="None"
+			status="F" default="" xpath="/hasChild" />
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+	</Operations>
+	<Script></Script>
+</CommQry>

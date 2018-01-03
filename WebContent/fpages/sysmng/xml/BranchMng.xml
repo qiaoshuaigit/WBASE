@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="机构管理" navigate=" &gt; 主页 &gt; 系统管理 &gt; 机构管理"
+	type="call" interface="true" pagesize="10" async="true" databusid="BranchMng"
+	transdataactionurl="/trans/TransDataAction.do" getterclassname="com.huateng.stl4j.getter.BranchMngGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/BranchMng.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示 -->
+		<!-- primary : true-作为表单项记录上传 false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" require="false"
+			readonly="true" primary="true" size="10" method="None" status="F"
+			default="" xpath="/id" />
+
+		<Field id="brhNo" desc="机构号" tip="机构号" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="9" method="None"
+			rules="isNumber9" errmsg="输入9位机构号！" status="F" default="" xpath="/brhNo" />
+
+		<Field id="brhName" desc="机构名称" tip="机构名称" edittype="text"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/brhName" />
+
+		<Field id="brhClass" desc="机构级别" tip="机构级别" edittype="select"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="10" method="None" translated="CQ:BrhClassList"
+			fieldmap="brhClass=brhClass;brhClassName=brhClassName" viewfield="brhClassName"
+			dropdowntype="dynamic" status="F" default="" xpath="/brhClass" />
+
+		<Field id="brhClassName" desc="机构级别名称" tip="机构级别名称" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/brhClassName" />
+
+		<Field id="upBrhId" desc="归属上级机构" tip="归属上级机构" edittype="select"
+			datatype="int" require="true" readonly="false" primary="false" size="10"
+			method="None" translated="CQ:BranchList" fieldmap="upBrhId=id;upBrhIdName=brhName"
+			viewfield="brhName" dropdowntype="dynamic" status="F" default=""
+			xpath="/upBrhId" />
+
+		<Field id="upBrhIdName" desc="归属上级机构名称" tip="归属上级机构名称" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/upBrhIdName" />
+
+		<Field id="property" desc="银行性质" tip="银行性质" edittype="select"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="1" method="None" translated="LIST:1,农村信用社;2,农村商业银行;3,村镇银行;4,农村合作银行"
+			status="F" default="" xpath="/property" />
+		<Field id="contacts" desc="联系人" tip="联系人" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/contacts" />
+		<Field id="teleNo" desc="联系电话" tip="联系电话" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="20" method="None" rules="isPhoneNumber" errmsg="联系电话输入错误！"
+			status="F" default="" xpath="/teleNo" />
+		<Field id="cityCd" desc="所属城市代码" tip="所属城市代码" edittype="select"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="10" method="None" translated="DATA_DIC.100001" status="F"
+			default="" xpath="/cityCd" />
+		<Field id="address" desc="地址" tip="地址" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="100" method="None"
+			status="F" default="" xpath="/address" />
+
+		<Field id="postno" desc="邮编" tip="邮编" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="6" method="None"
+			rules="isZipCode" errmsg="邮编输入错误！" status="F" default="" xpath="/postno" />
+
+		<Field id="status" desc="状态" tip="状态" edittype="select"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="1" method="None" translated="LIST:0,无效;1,有效" status="F"
+			default="" xpath="/status" />
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value="" />
+	</Parameters>
+	<Where>
+		<TextBox id="brhNoWhere" fieldname="brhNoWhere" datatype="string"
+			edittype="text" method="None" require="false" readonly="false" init="false"
+			default="" size="9" width="" desc="机构号" tip="机构号" index="1" />
+
+		<TextBox id="brhName" fieldname="brhName" datatype="string"
+			edittype="text" method="None" require="false" readonly="false" init="false"
+			default="" size="60" width="" desc="机构名称" tip="机构名称" index="2" />
+
+		<Option id="brhClassWhere" fieldname="brhClassWhere" datatype="string"
+			edittype="select" translated="CQ:BrhClassList" method="None" require="false"
+			readonly="false" fieldmap="brhClassWhere=brhClass;brhClassWhereName=brhClassName"
+			viewfield="brhClassName" dropdowntype="dynamic" init="false" default=""
+			size="20" width="" desc="机构级别" tip="机构级别" index="3" />
+		<Option id="sUpBrhId" fieldname="sUpBrhId" datatype="int"
+			edittype="select" translated="CQ:BranchListWhere" method="None"
+			require="false" readonly="false" fieldmap="sUpBrhId=id;sUpBrhIdName=brhName"
+			viewfield="brhName" dropdowntype="dynamic" init="false" default=""
+			size="20" width="" desc="归属上级机构" tip="归属上级机构" index="4" />
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit 
+			) -->
+		<Button id="btnAdd" name="btnAdd" desc="新增" operation="addrecord" />
+		<Button id="btnDel" name="btnDel" desc="删除" operation="delrecord" />
+		<Button id="btnSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveBranchInfoUpdater" />
+		<!-- Button id="btnTree" name="btnTree" desc="机构树" operation="" / -->
+	</Operations>
+	<Script></Script>
+</CommQry>

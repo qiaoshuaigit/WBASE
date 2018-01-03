@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="用户在线监控" navigate="主页 &gt; 系统管理 &gt; 用户在线监控"
+	type="call" interface="true" databusid="LogInSwitch"
+	transdataactionurl="/trans/TransDataAction.do" async="true" pagesize="10"
+	getterclassname="com.huateng.stl4j.getter.LogInSwitchGetter">
+	<Include id="BankParam" />
+	<Fields>
+
+		<Field id="id" desc="ID" edittype="text" datatype="int" require="false"
+			readonly="true" primary="true" size="10" method="None" status="F"
+			default="" xpath="/id" />
+		<Field id="paramDesc" desc="参数描述" tip="参数描述" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="20" method="None" status="F" default="" xpath="/paramDesc" />
+		<Field id="magicId" desc="参数子类型" tip="参数子类型" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="20" method="None" status="F" default="" xpath="/magicId" />
+		<Field id="paramId" desc="参数类型" tip="参数类型" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="20" method="None" status="F" default="" xpath="/paramId" />
+		<Field id="paramValue" desc="登录状态" tip="登录状态" edittype="select" size="20"
+			datatype="string" require="true" readonly="false" primary="false"
+			method="None" translated="LIST:true,允许登录;false,禁止登录" status="F"
+			default="" xpath="/paramValue" />
+	</Fields>
+	<Parameters />
+	<Where />
+	<Operations>
+		<Button id="btnLogInSwitchSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveLogInSwitchUpdater" />
+		<Button id="btnLogInSwitchRefresh" name="刷新" desc="刷新" url="#" />
+	</Operations>
+</CommQry>

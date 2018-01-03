@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xdoc version="6.9.7">
+  <meta author="test" modifyDate="2014-09-24 12:52:29" createDate="2014-09-24 10:09:06"></meta>
+  <paper width="700" height="1060" topMargin="96" leftMargin="96" rightMargin="96" bottomMargin="96"/>
+  <back align="center"/>
+  <body>
+    <para>
+      <text/>
+    </para>
+    <para align="center">
+      <text fontStyle="bold" fontSize="18">       调账申请单</text>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para>
+      <table cols="132,152,132,152" height="60" name="e760" left="112" sizeType="autosize" top="178" align="center" width="568" rows="30,30">
+        <cell name="e763" align="center">
+          <para lineSpacing="4" align="center">
+            <text fontName="宋体">交易渠道</text>
+          </para>
+        </cell>
+        <cell col="2" name="e764" align="center">
+          <para>
+            <text fontName="宋体">${TRAD_CHANNELS}</text>
+          </para>
+        </cell>
+        <cell col="3" name="e765" align="center">
+          <para lineSpacing="4" align="center">
+            <text fontName="宋体">调账方式</text>
+          </para>
+        </cell>
+        <cell col="4" name="e766" align="center">
+          <para>
+            <text fontName="宋体">${TALLY}</text>
+          </para>
+        </cell>
+        <cell name="e767" align="center" row="2">
+          <para lineSpacing="4" align="center">
+            <text fontName="宋体">申请日期</text>
+          </para>
+        </cell>
+        <cell col="2" name="e768" align="center" row="2">
+          <para>
+            <text fontName="宋体">${REQ_DATE}</text>
+          </para>
+        </cell>
+        <cell col="3" name="e769" align="center" row="2">
+          <para lineSpacing="4" align="center">
+            <text fontName="宋体">申请人</text>
+          </para>
+        </cell>
+        <cell col="4" name="e770" align="center" row="2">
+          <para>
+            <text fontName="宋体">${REQ_OPR}</text>
+          </para>
+        </cell>
+      </table>
+    </para>
+    <para>
+      <table cols="132,436" height="32" name="e1952" left="112" sizeType="autosize" top="238" align="center" width="568" rows="32">
+        <cell name="e1955" align="center">
+          <para lineSpacing="4" align="center">
+            <text fontName="宋体">备注</text>
+          </para>
+        </cell>
+        <cell col="2" name="e1956" align="center">
+          <para lineSpacing="4">
+            <text fontName="宋体">${MISC}</text>
+          </para>
+        </cell>
+      </table>
+    </para>
+    <para>
+      <table cols="568" height="80" name="e2493" left="112" sizeType="autosize" top="302" align="center" width="568" rows="80">
+        <cell name="e2496" sizeType="autoheight">
+          <para>
+            <text/>
+          </para>
+          <para>
+            <text fontName="宋体">金额：${AMOUNT}元</text>
+          </para>
+          <para>
+            <text fontName="宋体">借：${BRH_NO1}  ${ACCT_ID1} (${ACCT_NAME1})</text>
+          </para>
+          <para>
+            <text fontName="宋体">  贷：${BRH_NO2}  ${ACCT_ID2} (${ACCT_NAME2})</text>
+          </para>
+          <para>
+            <text/>
+          </para>
+        </cell>
+      </table>
+    </para>
+    <para>
+      <text fontName="宋体">打印次数：${PRINT_COUNT}  操作员：${OPR_LIST}</text>
+    </para>
+  </body>
+</xdoc>

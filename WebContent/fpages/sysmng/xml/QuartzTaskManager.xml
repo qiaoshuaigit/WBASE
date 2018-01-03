@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="定时/轮训任务管理" navigate="&gt;主页 &gt; 系统管理 &gt; 定时/轮循任务管理"
+	type="call" interface="true" databusid="quartzManager"
+	transdataactionurl="/trans/TransDataAction.do" async="true"
+	pagesize="10" getterclassname="com.huateng.stl4j.getter.QuartzTaskManagerGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="beanId" xpath="/beanId" desc="任务ID" tip="任务ID" size="100"
+			edittype="text" datatype="string" require="false" readonly="true" init="false" />
+		<Field id="taskName" xpath="/taskName" desc="任务名称" tip="任务名称" size="100"
+			edittype="text" datatype="string" require="false" readonly="true"
+			init="false" />
+		<Field id="triggerType" xpath="/triggerType" desc="类型" tip="类型" size="100"
+			edittype="text" datatype="string" require="false" readonly="true"
+			init="false" />
+		<Field id="status" xpath="/status" desc="状态" tip="状态" size="100"
+			edittype="select" datatype="string" require="false" readonly="true"
+			translated="LIST:-1,-1-不存在;0,0-正常;1,1-暂停;2,2-已完成;3,3-出错;4,4-阻塞"
+			init="false" />
+		<Field id="taskDefine" xpath="/taskDefine" desc="任务执行计划定义" size="200"
+			tip="任务执行计划定义" edittype="text" datatype="string" require="true"
+			readonly="false" init="false" />
+		<Field id="nextExecuteTime" xpath="/nextExecuteTime" size="100"
+			desc="下一执行时间" tip="下一执行时间" edittype="text" datatype="string"
+			require="false" readonly="true" init="false" />
+	</Fields>
+	<Parameters />
+	<Where />
+	<Operations>
+		<Button id="saveBtn" name="保存" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.QuartzTaskSaveUpdater" />
+		<Button id="pausedBtn" name="暂停" desc="暂停" url="#" />
+		<Button id="resumeBtn" name="恢复" desc="恢复" url="#" />
+		<Button id="refreshBtn" name="刷新" desc="刷新" url="#" />
+	</Operations>
+</CommQry>

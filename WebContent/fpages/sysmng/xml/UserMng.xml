@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="用户管理" navigate="&gt;主页 &gt; 系统管理 &gt; 用户管理" type="call"
+	interface="true" pagesize="10" async="true" databusid="UserMng"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.UserMngGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/UserMng.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+		<Field id="oprNo" desc="用户号" tip="用户号" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/oprNo" />
+		<Field id="oldOprNo" desc="Old用户号" tip="old用户号" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/oldOprNo" />	
+		<Field id="userName" desc="用户名" tip="用户名" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/userName" />
+		<Field id="brhNoName" xpath="/brhName" desc="差错机构名称" tip="差错机构名称" size="60"
+ 			edittype="text" datatype="string" require="false" defaultvalue="" 
+ 			readonly="true" />
+		<Field id="brhNo" xpath="/brhNo" desc="所属机构" tip="所属机构"
+			edittype="select" datatype="string" require="true" readonly="false"
+			primary="false" size="60" method="None" translated="CQ:BranchListClass3"
+			fieldmap="brhNo=brhNo;brhNoName=brhName" viewfield="brhName"
+			dropdowntype="dynamic" status="F" default="" init="true" colspan="4"
+			width="350"  />
+		<Field id="status" desc="状态" tip="状态" edittype="select" datatype="string"
+			require="true" readonly="false" primary="false" size="1" method="None"
+			translated="LIST:0,无效;1,有效" 
+			status="F" default="" xpath="/status" />
+		
+		<Field id="teleno" desc="电话" tip="电话" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/teleno"  rules="isPhoneNumber" errmsg="电话输入错误！"/>	
+			
+		<Field id="oprId" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/oprId"/>
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value=""/>
+	</Parameters>
+	<Where>
+		<TextBox id="oprNo" fieldname="oprNo" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="20" width="" desc="用户号" tip="用户号" index="1" />
+			
+		<TextBox id="userName" fieldname="userName" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="60" width="" desc="用户名" tip="用户名" index="2" />
+			
+		<Option id="brhNo" fieldname="upBrhId" datatype="int" edittype="select" 
+			translated="CQ:BranchList" method="None" require="false" readonly="false" 
+			fieldmap="brhNo=brhNo;brhNoName=brhName" viewfield="brhName" 
+			dropdowntype="dynamic" init="false" default="" 
+			size="20" width="" desc="所属机构" tip="所属机构" index="3" />
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnAdd" name="btnAdd" desc="新增" operation="addrecord" />
+		<Button id="btnDel" name="btnDel" desc="删除" operation="delrecord" />
+		<Button id="btnSaveUser" name="btnSaveUser" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveUserInfoUpdater" />
+		<Button id="btnRole" name="btnRole" desc="分配岗位" operation="" />
+		<Button id="btnResetPasswd" name="btnResetPasswd" desc="重置密码" operation="" />
+	</Operations>
+	<Script></Script>
+</CommQry>

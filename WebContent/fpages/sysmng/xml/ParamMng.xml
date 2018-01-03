@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="参数管理" navigate="主页 &gt; 系统管理 &gt; 参数管理 &gt; 参数设置" type="call"
+	interface="true" pagesize="10" async="true" databusid="ParamMng"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.ParamMngGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/ParamMng.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="paramId" desc="参数类型" tip="参数类型" edittype="text" datatype="string"
+			require="true" readonly="true" primary="false" size="20" method="None"
+			status="F" default="" xpath="/paramId" />
+		
+		<Field id="magicId" desc="参数子类型" tip="参数子类型" edittype="text" datatype="string"
+			require="true" readonly="true" primary="false" size="30" method="None"
+			status="F" default="" xpath="/magicId" />
+			
+		<Field id="paramValue" desc="参数值" tip="参数值" edittype="textarea" datatype="string" colspan="4"
+			require="true" readonly="false" primary="false" size="512" method="None" height="100" width="432"
+			status="F" default="" xpath="/paramValue"  />
+ 
+					<!--Field id="paramValue" desc="测试" tip="测试" edittype="select" datatype="int"
+			require="true" readonly="false" primary="false" size="10" method="None"
+			translated="DATA_DIC.2000" 
+			status="F" default="" xpath="/paramValue" /-->
+			
+		<Field id="paramDesc" desc="参数描述" tip="参数描述" colspan="4" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="256" method="None" width="432"
+			status="F" default="" xpath="/paramDesc" />
+			
+	
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value=""/>
+	</Parameters>
+	<Where>
+		<TextBox id="paramId" fieldname="paramId" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="20"  width=""  desc="参数类型" tip="参数类型" index="1" />
+		<TextBox id="magicId" fieldname="magicId" desc="参数子类型" tip="参数子类型" edittype="text" datatype="string"
+			 readonly="false"  size="30" method="None" init="false" require="false"
+			 default="" index="2" />
+			
+			<!-- Field id="paramValue" desc="归属上级机构" tip="归属上级机构" edittype="select" datatype="int"
+			require="true" readonly="false" primary="false" size="10" method="None"
+			translated="CQ:Test" fieldmap="id=id;paramValue=paramValue" 
+			viewfield="paramValue" dropdowntype="dynamic"  
+			status="F" default="" xpath="/paramValue" /-->
+		<!-- 
+		<TextBox id="paramValue" fieldname="paramValue" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="512" width="" desc="参数值" tip="参数值" index="3" />
+		<TextBox id="paramDesc" fieldname="paramDesc" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="256" width="" desc="参数描述" tip="参数描述" index="4" /> -->
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnAdd" name="btnAdd" desc="新增" operation="addrecord" />
+		<Button id="btnDel" name="btnDel" desc="删除" operation="delrecord" />
+		<Button id="btnSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveParamUpdater" />
+	</Operations>
+	<Script></Script>
+</CommQry>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 本配置只用于机构同步  -->
+<beans>
+	<bean id="BranchSyncProcessor" class="com.huateng.ebank.business.common.BranchSyncProcessor" />
+
+	<bean id="BranchSyncProcessorTaskMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="BranchSyncProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doBranchSyncProcess</value>
+		</property>
+	</bean>
+
+	<bean id="BranchSyncProcessTaskTarget" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="BranchSyncProcessorTaskMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>BranchSyncProcessTaskTarget</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0 2 * * ?</value>
+       </property>
+       -->
+    </bean>
+</beans>

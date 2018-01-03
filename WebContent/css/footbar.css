@@ -1,0 +1,97 @@
+* {
+	margin: 0;
+}
+
+body,div,td,th {
+	font-family: simsun, 'ËÎÌå', 'ÐÂËÎÌå', sans-serif;
+	font-size: 9pt;
+	color: #303030;
+	line-height: 180%;
+}
+
+div,form,img {
+	padding: 0;
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link,a:visited {
+	color: #303030;
+}
+
+a:hover,a:active {
+	color: #0060C0;
+	text-decoration: underline;
+}
+
+.foot-sp-nav {
+	overflow: hidden;
+	background: url(../images/footbar.png) repeat-x 0 -157px;
+	height: 23px;
+	line-height: 23px;
+}
+
+.foot-sp-con {
+	color: #C0C0C0;
+	margin: 0 auto;
+	width: 932px;
+}
+
+.foot-sp-l {
+	overflow: hidden;
+	float: left;
+	background: url(../images/footbar.png) no-repeat 0 -71px;
+	width: 6px;
+	height: 23px
+}
+
+.foot-sp-r {
+	overflow: hidden;
+	float: right;
+	background: url(../images/footbar.png) no-repeat -6px -71px;
+	width: 6px;
+	height: 23px
+}
+
+.foot-sp-m {
+	position: relative;
+	padding: 0 10px;
+	float: left;
+	background: url(../images/footbar.png) repeat-x 0 0px;
+	height: 23px;
+	line-height: 23px;
+	width: 900px;
+	color: #303030;
+	text-align: center;
+}
+
+.foot-sp-m .span {
+	position: absolute;
+	vertical-align: middle;
+	right: 10px;
+	color: #113593;
+}
+/**
+.foot-sp-m span a {
+	margin-left: 3px
+}
+
+.foot-sp-m span strong {
+	color: #113593
+}
+*/
+.foot-sp-m a,.foot-sp-m a:visited {
+	color: #303030;
+	text-decoration: none
+}
+
+.foot-sp-m a:hover {
+	color: #C03000
+}
+/*
+body {
+	background: #f1f1f1;
+}*/

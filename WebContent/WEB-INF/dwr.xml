@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+
+<dwr>
+  <allow>
+    <create creator="new" javascript="CommonQueryResultProcess">
+		<param name="class" value="com.huateng.commquery.process.BankResultProcess"/>
+		<include method="processAsyncBean"/>
+	</create>
+
+    <create creator="new" javascript="CommonQueryUpdateProcess">
+		<param name="class" value="com.huateng.commquery.process.BankUpdateProcess"/>
+		<include method="savaOrUpdate"/>
+	</create>
+
+	<create creator="new" javascript="PortletProcess">
+		<param name="class" value="com.huateng.commquery.process.PortletProcess"/>
+		<include method="process"/>
+	</create>
+
+	<create creator="new" javascript="UploadMonitor">
+		<param name="class" value="com.huateng.commquery.fileupload.UploadMonitor"/>
+	</create>
+	
+	<create creator="new" javascript="PrivateAction">
+		<param name="class" value="com.huateng.stl4j.common.DwrFunctions" />
+		<include method="getBranchTree"/>
+		<include method="isHaveBranch"/>
+		<include method="isHaveOpr"/>
+		<include method="getRoleFuncRelation"/>
+		<include method="saveRoleFuncRelation"/>
+		<include method="pausedQuartzTask"/>
+		<include method="resumeQuartzTask"/>
+		<include method="hasWorkList"/>
+		<include method="doJvmGc"/>
+	</create>
+
+    <convert match="java.util.Map" converter="map"/>
+    <convert match="java.util.Collection" converter="collection"/>
+    <convert match="com.huateng.exception.AppException" converter="bean"/>
+    <convert match="com.huateng.commquery.result.ResultParamBean" javascript="ResultParamBean" converter="bean"/>
+    <convert match="com.huateng.commquery.result.ResCdMsg" javascript="ResCdMsg" converter="bean"/>
+    <convert match="com.huateng.commquery.result.MultiUpdateResultBean" converter="bean"/>
+    <convert match="com.huateng.commquery.result.UpdateResultBean" converter="bean"/>
+    <convert match="com.huateng.commquery.result.UpdateReturnBean" converter="bean"/>
+    <convert match="com.huateng.commquery.fileupload.UploadInfo" converter="bean"/>
+    <convert match="com.huateng.ebank.entity.BranchInfo" converter="bean" />
+  </allow>
+
+	<signatures>
+		<![CDATA[
+		import java.util.List;
+		import java.util.Map;
+		import com.huateng.commquery.result.UpdateReturnBean;
+		import com.huateng.commquery.result.UpdateResultBean;
+		import com.huateng.commquery.process.BankResultProcess;
+		import com.huateng.commquery.process.BankUpdateProcess;
+		import com.huateng.commquery.result.MultiUpdateResultBean;
+		BankResultProcess.processAsyncBean(Map<String,String> map,HttpServletRequest request,HttpServletResponse response);
+		BankUpdateProcess.savaOrUpdate(String updateClassName,MultiUpdateResultBean bean,HttpServletRequest request,HttpServletResponse response);
+		MultiUpdateResultBean.setUpdateResult(Map<String,UpdateResultBean> map);
+		MultiUpdateResultBean.setParamMap(Map<String,String> map);
+		UpdateReturnBean.setParamMap(Map<String,String> map);
+		UpdateResultBean.setParamMap(Map<String,String> map);
+		UpdateResultBean.setTotalList(List<Map> list);
+		]]>
+	</signatures>
+
+<!--
+  <signatures>
+  <![CDATA[
+  	import com.huateng.commquery.process.BankResultProcess;
+  	import java.util.Map ;
+  	import javax.servlet.ServletRequest;
+  	BankResultProcess.processAsyncBean(Map<String,String> map,HttpServletRequest request,HttpServletResponse response);
+  ]]>
+ </signatures>
+-->
+</dwr>

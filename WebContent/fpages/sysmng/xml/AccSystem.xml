@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="接入系统维护" navigate="&gt;主页 &gt; 系统管理 &gt; 接入系统管理" type="call"
+	interface="true" pagesize="5" async="true" databusid="BranchMng"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.AccSystemGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/AccSystem.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="accsystemName" desc="接入系统名称" tip="接入系统名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="50" method="None"
+			status="F" default="" xpath="/accsystemName" />
+
+		<Field id="accsystemCode" desc="接入系统编号" tip="接入系统编号" edittype="select" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None" 
+			translated="CQ:AccSystemParamList" fieldmap="accsystemCode=accsystemCode;accsystemName=accsystemName;accsystemCodeName=accsystemInfo" 
+			viewfield="accsystemInfo" dropdowntype="dynamic"  
+			status="F" default="" xpath="/accsystemCode" />
+			
+		<Field id="managerItName" desc="技术方联系人姓名" tip="技术方联系人姓名" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="50" method="None"
+			status="F" default="" xpath="/managerItName" />
+			
+		<Field id="managerItTel" desc="技术方联系人电话" tip="技术方联系人电话" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/managerItTel" />
+			
+		<Field id="managerBusinessAnme" desc="业务方联系人姓名" tip="业务方联系人姓名" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="50" method="None"
+			status="F" default="" xpath="/managerBusinessAnme" />
+			
+		<Field id="managerBusinessTel" desc="业务方联系人电话" tip="业务方联系人电话" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/managerBusinessTel" />	
+		<!-- 
+		<Field id="dkFlg" desc="垫款标志" tip="垫款标致" edittype="select" datatype="int"
+			require="true" readonly="false" primary="false" size="2" method="None"
+			translated="DATA_DIC.2012"  status="F" default="" xpath="/dkFlg" />	
+		<Field id="dkPan" desc="垫款账号" tip="垫款账号" edittype="text" datatype="string"
+			require="true" readonly="false" primary="false" size="30" method="None"
+			status="F" default="" xpath="/dkPan" />
+		 -->
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value=""/>
+	</Parameters>
+	<Where>
+		<TextBox id="accsystemName" fieldname="accsystemName" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="50" width="" desc="接入系统名称" tip="接入系统名称" index="2" />
+			
+		<TextBox id="accsystemCode" fieldname="accsystemCode" datatype="string" edittype="text" 
+			method="None" require="false" readonly="false" init="false" default="" 
+			size="20" width="" desc="接入系统编号" tip="接入系统编号" index="1" />
+
+
+		
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnAdd" name="btnAdd" desc="新增" operation="addrecord" />
+		<Button id="btnDel" name="btnDel" desc="删除" operation="delrecord" />
+		<Button id="btnSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveAccSystemInfoUpdater" />
+		<Button id="btnCfg" name="btnCfg" desc="配置" operation="" />
+		
+	</Operations>
+	<Script></Script>
+</CommQry>

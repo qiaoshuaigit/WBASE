@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 本配置只用于工作流程历史数据清理  -->
+<beans>
+	<bean name="topbpmCleanJob" class="com.huateng.ebank.topbpm.tools.TopBpmCleanJob" >
+		<property name="commitCount">
+          <value>50</value>
+       </property>
+       <property name="dueDays">
+           <value>90</value>
+       </property>
+	</bean>
+
+    <bean id="TopBpmCleanJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+       <property name="targetObject">
+           <ref bean="topbpmCleanJob" />
+       </property>
+       <property name="concurrent">
+			<value>false</value>
+		</property>
+       <property name="targetMethod">
+           <value>clear</value>
+       </property>
+    </bean>
+
+    <bean id="TopBpmCleanJobTarget" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="TopBpmCleanJobMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>TopBpmCleanJobTarget</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0 0 * * ?</value>
+       </property>
+       -->
+    </bean>
+</beans>

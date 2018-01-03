@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="跨系统流水查询" navigate="主页 &gt; 业务系统 &gt; 跨系统流水查询" type="call"
+	interface="true" pagesize="5" async="true" databusid="BranchMng"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.CrossSystemQueryGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/CrossSystemQuery.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="zwrq" desc="账务日期" tip="账务日期" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/zwrq" />
+			
+		<Field id="zhqzlsh" desc="综合前置流水号" tip="综合前置流水号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="30" method="None"
+			status="F" default="" xpath="/zhqzlsh" />
+			
+		<Field id="jyqd" desc="交易渠道" tip="交易渠道" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="10" method="None"
+			status="F" default="" xpath="/jyqd" />			
+			
+		<Field id="workDate" desc="工作日期" tip="工作日期" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/workDate" />			
+					
+		<Field id="entrustdDate" desc="委托日期" tip="委托日期" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/entrustdDate" />	
+					
+		<Field id="taxorgCode" desc="征收机关代码" tip="征收机关代码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="12" method="None"
+			status="F" default="" xpath="/taxorgCode" />	
+				
+		<Field id="trano" desc="交易流水号" tip="交易流水号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/trano" />		
+					
+		<Field id="msgno" desc="报文编号" tip="报文编号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="4" method="None"
+			status="F" default="" xpath="/msgno" />	
+						
+		<Field id="entrustDate2" desc="委托日期2" tip="委托日期2" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/entrustDate2" />	
+						
+		<Field id="trano2" desc="交易流水号2" tip="交易流水号2" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/trano2" />	
+	
+		<Field id="zhqzlsh2" desc="综合前置流水号2" tip="综合前置流水号2" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="30" method="None"
+			status="F" default="" xpath="/zhqzlsh2" />	
+			
+		<Field id="chkDate" desc="对账日期" tip="对账日期" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/chkDate" />	
+				
+		<Field id="chkAcctord" desc="对账批次号" tip="对账批次号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="4" method="None"
+			status="F" default="" xpath="/chkAcctord" />	
+					
+		<Field id="handleType" desc="经收类别" tip="经收类别" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="1" method="None"
+			status="F" default="" xpath="/handleType" />	
+					
+		<Field id="treCode" desc="国库代码" tip="国库代码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="10" method="None"
+			status="F" default="" xpath="/treCode" />	
+				
+		<Field id="payeebankNo" desc="收款行行号" tip="收款行行号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="14" method="None"
+			status="F" default="" xpath="/payeebankNo" />	
+								
+		<Field id="payeeOrgCode" desc="收款单位代码" tip="收款单位代码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="12" method="None"
+			status="F" default="" xpath="/payeeOrgCode" />						
+		
+		<Field id="payeeAcct" desc="收款人账号" tip="收款人账号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="32" method="None"
+			status="F" default="" xpath="/payeeAcct" />				
+
+		<Field id="payeeName" desc="收款人名称" tip="收款人名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="60" method="None"
+			status="F" default="" xpath="/payeeName" />		
+	
+		<Field id="paybkCode" desc="付款行行号" tip="付款行行号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="14" method="None"
+			status="F" default="" xpath="/paybkCode" />		
+	
+		<Field id="payopbkCode" desc="付款开户行行号" tip="付款开户行行号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="14" method="None"
+			status="F" default="" xpath="/payopbkCode" />		
+
+		<Field id="protocolNo" desc="协议书号" tip="协议书号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="60" method="None"
+			status="F" default="" xpath="/protocolNo" />		
+	
+		<Field id="payAcct" desc="付款人账号" tip="付款人账号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="32" method="None"
+			status="F" default="" xpath="/payAcct" />		
+	
+		<Field id="handOrgName" desc="缴款单位名称" tip="缴款单位名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="60" method="None"
+			status="F" default="" xpath="/handOrgName" />		
+	
+		<Field id="dfzh" desc="贷方账号" tip="贷方账号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="32" method="None"
+			status="F" default="" xpath="/dfzh" />		
+	
+		<Field id="jyje" desc="交易金额" tip="交易金额" edittype="text" datatype="currency"
+			require="false" readonly="true" primary="true" size="14" scale="2" method="None"
+			status="F" default="" xpath="/jyje" />		
+	
+		<Field id="taxvouNo" desc="税票号码" tip="税票号码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="18" method="None"
+			status="F" default="" xpath="/taxvouNo" />
+					
+		<Field id="dqdh" desc="地区代号" tip="地区代号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="10" method="None"
+			status="F" default="" xpath="/dqdh" />
+					
+		<Field id="jgdh" desc="机构代号" tip="机构代号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="10" method="None"
+			status="F" default="" xpath="/jgdh" />
+					
+		<Field id="jygy" desc="交易柜员" tip="交易柜员" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="16" method="None"
+			status="F" default="" xpath="/jygy" />
+					
+		<Field id="zddh" desc="终端代号" tip="终端代号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="16" method="None"
+			status="F" default="" xpath="/zddh" />
+					
+		<Field id="jyrq" desc="交易日期" tip="交易日期" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/jyrq" />
+					
+		<Field id="jysj" desc="交易时间" tip="交易时间" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="6" method="None"
+			status="F" default="" xpath="/jysj" />
+					
+		<Field id="zjrq" desc="主机日期" tip="主机日期" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/zjrq" />
+					
+		<Field id="zjsj" desc="主机时间" tip="主机时间" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="6" method="None"
+			status="F" default="" xpath="/zjsj" />
+					
+		<Field id="zjlsh" desc="主机流水号" tip="主机流水号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="18" method="None"
+			status="F" default="" xpath="/zjlsh" />
+			
+		<Field id="zjxym" desc="主机响应码" tip="主机响应码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/zjxym" />
+					
+		<Field id="sxf" desc="手续费" tip="手续费" edittype="text" datatype="currency"
+			require="false" readonly="true" primary="true" size="14" scale="2"  method="None"
+			status="F" default="" xpath="/sxf" />
+					
+		<Field id="zhye" desc="账户余额" tip="账户余额" edittype="text" datatype="currency"
+			require="false" readonly="true" primary="true" size="14" scale="2" method="None"
+			status="F" default="" xpath="/zhye" />
+			
+		<Field id="xym" desc="响应码" tip="响应码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="5" method="None"
+			status="F" default="" xpath="/xym" />
+			
+		<Field id="xyxx" desc="响应信息" tip="响应信息" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="60" method="None"
+			status="F" default="" xpath="/xyxx" />
+			
+		<Field id="jyzt" desc="交易状态" tip="交易状态" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="1" method="None"
+			status="F" default="" xpath="/jyzt" />
+			
+		<Field id="dzbz" desc="对账标志" tip="对账标志" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="2" method="None"
+			status="F" default="" xpath="/dzbz" />
+			
+		<Field id="qsbz" desc="清算标志" tip="清算标志" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="1" method="None"
+			status="F" default="" xpath="/qsbz" />
+			
+		<Field id="kzbz" desc="扩展标志" tip="扩展标志" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="8" method="None"
+			status="F" default="" xpath="/kzbz" />
+			
+		<Field id="taxpayCode" desc="纳税人编码" tip="纳税人编码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="20" method="None"
+			status="F" default="" xpath="/taxpayCode" />
+			
+		<Field id="byzd" desc="备用字段" tip="备用字段" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="60" method="None"
+			status="F" default="" xpath="/byzd" />
+	</Fields>
+	<Script></Script>
+</CommQry>

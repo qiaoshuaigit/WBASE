@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<META>
+	<!-- 
+	<Query id="BatchStepMng" path="/fpages/batch/xml/BatchStepMng.xml" />
+	<Query id="BatchStepView" path="/fpages/batch/xml/BatchStepView.xml" />
+	<Query id="BatchJobView" path="/fpages/batch/xml/BatchJobView.xml" />
+	<Query id="BatchJobDetail" path="/fpages/batch/xml/BatchJobDetail.xml" />
+	<Query id="BatchLogInfo" path="/fpages/batch/xml/BatchLogInfo.xml" />
+	-->
+</META>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 本配置只用于CLUSTER SCHEDULE  -->
+<beans>
+	<bean id="DoClusterNoticeProcess" class="com.huateng.ebank.business.common.DoClusterNoticeProcess">
+	</bean>
+
+	<bean id="DoClusterNoticeProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="DoClusterNoticeProcess"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doNoticeProcess</value>
+		</property>
+	</bean>
+	
+	<bean id="activeNoticeProcessJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="DoClusterNoticeProcess"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>activeNoticeProcess</value>
+		</property>
+	</bean>
+
+	<bean id="DoClusterNoticeProcessTrigger" class="com.huateng.tools.OmCronTriggerBean">
+		<property name="scheduleMgr">
+            <ref bean="ScheduleInfoManager" />
+        </property>
+        <property name="beanId">
+            <value>DoClusterNoticeProcessTrigger</value>
+        </property>
+		<property name="jobDetail">
+			<ref bean="DoClusterNoticeProcessJobDetail"/>
+		</property>
+	</bean>
+	
+	<bean id="activeNoticeProcessTrigger" class="com.huateng.tools.OmCronTriggerBean">
+		<property name="scheduleMgr">
+            <ref bean="ScheduleInfoManager" />
+        </property>
+        <property name="beanId">
+            <value>activeNoticeProcessTrigger</value>
+        </property>
+		<property name="jobDetail">
+			<ref bean="activeNoticeProcessJobDetail"/>
+		</property>
+	</bean>
+</beans>

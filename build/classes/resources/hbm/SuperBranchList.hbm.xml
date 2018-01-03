@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.ebank.entity">
+	<class lazy="false" 
+		name="SuperBranchList"
+		table="W_SUPER_BRANCH_LIST"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+
+		<property
+			name="brhNo"
+			column="BRH_NO"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="brhClass"
+			column="BRH_CLASS"
+			type="string"
+			not-null="false"
+			length="1"
+		/>
+		<property
+			name="upBrhId1"
+			column="UP_BRH_ID1"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId2"
+			column="UP_BRH_ID2"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId3"
+			column="UP_BRH_ID3"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId4"
+			column="UP_BRH_ID4"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId5"
+			column="UP_BRH_ID5"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId6"
+			column="UP_BRH_ID6"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId7"
+			column="UP_BRH_ID7"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId8"
+			column="UP_BRH_ID8"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="upBrhId9"
+			column="UP_BRH_ID9"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<META>
+	<Query id="SimpleQuery" path="/fpages/sysmng/xml/SimpleQuery.xml" />	
+	<Query id="CommEmpty" path="/fpages/sysmng/xml/CommEmpty.xml" />
+	<Query id="BrhClassList" path="/fpages/sysmng/xml/BrhClassList.xml" />
+	<Query id="BranchList" path="/fpages/sysmng/xml/BranchList.xml" />
+	<Query id="BranchListWhere" path="/fpages/sysmng/xml/BranchList.xml" />
+	<Query id="BranchListClass3" path="/fpages/sysmng/xml/BranchListClass3.xml" />
+	<Query id="BranchAllList" path="/fpages/sysmng/xml/BranchAllList.xml" />
+	<Query id="BranchTree" path="/fpages/sysmng/xml/BranchTree.xml" />
+	<Query id="BranchMng" path="/fpages/sysmng/xml/BranchMng.xml" />
+	<Query id="AccSystem" path="/fpages/sysmng/xml/AccSystem.xml" />
+	<Query id="RoleInfo" path="/fpages/sysmng/xml/RoleInfo.xml" />
+	<Query id="RoleInfoList" path="/fpages/sysmng/xml/RoleInfoList.xml" />
+	<Query id="RoleFuncRelation" path="/fpages/sysmng/xml/RoleFuncRelation.xml" />
+	<Query id="UserMng" path="/fpages/sysmng/xml/UserMng.xml" />
+	<Query id="UserList" path="/fpages/sysmng/xml/UserList.xml" />
+	<Query id="UserRoleRelation" path="/fpages/sysmng/xml/UserRoleRelation.xml" />
+	<Query id="ChgPasswd" path="/fpages/sysmng/xml/ChgPasswd.xml" />
+	<Query id="ResetPasswd" path="/fpages/sysmng/xml/ResetPasswd.xml" />
+	<Query id="ReloadList" path="/fpages/sysmng/xml/ReloadList.xml" />
+	<Query id="ProxoolMonitor" path="/fpages/sysmng/xml/ProxoolMonitor.xml" />
+	<!-- 参数查询 -->
+    <Query id="ParamMng" path="/fpages/sysmng/xml/ParamMng.xml" />
+	<Query id="APSErrTypeTree" path="/fpages/sysmng/xml/APSErrTypeTree.xml" />
+	<Query id="DataDicList" path="/fpages/sysmng/xml/DataDicList.xml" />
+	<Query id="DataDicListW" path="/fpages/sysmng/xml/DataDicListW.xml" />
+	<Query id="DataDic3000List" path="/fpages/sysmng/xml/DataDic3000List.xml" />
+	<Query id="YW_NAVIGATE" path="/fpages/sysmng/xml/YW_NAVIGATE.xml" />
+	<Query id="QuartzTaskManager" path="/fpages/sysmng/xml/QuartzTaskManager.xml" />
+	<Query id="LogInSwitch" path="/fpages/sysmng/xml/LogInSwitch.xml" />
+	<Query id="OprOnline" path="/fpages/sysmng/xml/OprOnline.xml" />
+	<Query id="TableDefine" path="/fpages/sysmng/xml/TableDefine.xml" />
+	<Query id="TableDefineInfo" path="/fpages/sysmng/xml/TableDefineInfo.xml" />
+	<Query id="TxnCountQuery" path="/fpages/sysmng/xml/TxnCountQuery.xml" />
+</META>

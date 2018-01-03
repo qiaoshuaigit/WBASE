@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="交易统计" navigate="主页 &gt; 系统管理 &gt; 运维管理 &gt; 交易统计"
+	type="call" interface="true" transdataactionurl="/trans/TransDataAction.do"
+	async="true" pagesize="5" getterclassname="com.huateng.stl4j.getter.TxnCountQueryGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/TxnCountQuery.ftl
+	</ResultViewParam>
+	<Fields>
+		<Field id="txnType" xpath="/txnType" desc="交易类型" edittype="text"
+			datatype="string" require="false" primary="false" readonly="true"/>
+		<Field id="tradChl" xpath="/tradChl" desc="交易渠道" edittype="text"
+			datatype="string" require="false" primary="false" readonly="true"/>
+		<Field id="txnCount" xpath="/txnCount" desc="交易笔数" edittype="text"
+			datatype="int" require="false" primary="false" readonly="true"/>
+		<Field id="txnCgl" xpath="/txnCgl" desc="成功率" edittype="text"
+			datatype="string" require="false" primary="false" readonly="true"/>
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+		<TextBox id="startDate" fieldname="startDate"
+			datatype="date" edittype="text" size="20" desc="起始日期" tip="起始日期"
+			method="None" index="1" require="true" readOnly="false" />
+		<TextBox id="endDate" fieldname="endDate"
+			datatype="date" edittype="text" size="20" desc="截止日期" tip="截止日期"
+			method="None" index="2" require="true" readOnly="false" />
+	</Where>
+	<Operations>
+	</Operations>
+</CommQry>

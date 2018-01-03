@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="用户管理" navigate="主页 &gt; 系统管理 &gt; 用户管理" type="call"
+	interface="false" pagesize="10" async="true" databusid="UserRoleRelation"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.UserRoleRelationGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="select" desc="选择" tip="选择" edittype="checkbox" datatype="boolean"
+			require="false" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/select" />
+			
+		<Field id="roleCode" desc="岗位编号" tip="岗位编号" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="6" method="None" 
+			status="F" default="" xpath="/roleCode"/>
+			
+		<Field id="roleName" desc="岗位名称" tip="岗位名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/roleName" />
+			
+		<Field id="oprId" desc="用户ID" tip="用户ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/oprId"/>
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+		<Button id="btnSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveUserRoleRelationUpdater" />
+	</Operations>
+	<Script></Script>
+</CommQry>

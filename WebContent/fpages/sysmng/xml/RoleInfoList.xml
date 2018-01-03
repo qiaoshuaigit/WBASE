@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="岗位管理" navigate="主页 &gt; 系统管理 &gt; 岗位明细" type="call"
+	interface="true" pagesize="10" async="true" databusid="RoleInfoList"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.RoleInfoListGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="岗位编号" tip="岗位编号" edittype="text" datatype="int" 
+			require="true" readonly="false" primary="true" size="6" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="roleIdName" desc="岗位名称" tip="岗位名称" edittype="datalabel" datatype="string"
+			require="true" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/roleName" />			
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+	</Operations>
+	<Script></Script>
+</CommQry>

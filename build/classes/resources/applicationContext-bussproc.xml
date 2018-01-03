@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 本配置只用于差错审批结束后的业务处理  -->
+<beans>
+	<!-- 差错调整任务分解 -->
+	<bean id="TaskAssignService" class="com.huateng.ebank.business.common.service.TaskAssignService">
+	</bean>
+	
+	<!-- 支付到核心调账任务 -->
+	<bean id="APSAcctAdjustProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>APS</value>
+		</property>
+	</bean>
+	
+	<!-- 横联到核心调账任务 -->
+	<bean id="TIPSAcctAdjustProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>TIPS</value>
+		</property>
+	</bean>
+	
+	<!-- 网银跨行清算到核心调账任务 -->
+	<bean id="IBPSAcctAdjustProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>IBPS</value>
+		</property>
+	</bean>
+	
+	<!-- 灵活调账到核心调账任务 -->
+	<bean id="FlexibleAcctAdjustProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>EPS</value>
+		</property>
+	</bean>
+	
+	<!-- 支付差错反馈结果至支付 -->
+	<bean id="APSResultFeedBackProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>APS</value>
+		</property>
+		<property name="serverSystem">
+			<value>APS</value>
+		</property>
+	</bean>
+	
+	<!-- 横联差错反馈结果至横联 -->
+	<bean id="TIPSResultFeedBackProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>TIPS</value>
+		</property>
+		<property name="serverSystem">
+			<value>TIPS</value>
+		</property>
+	</bean>
+	
+	<!-- 网银清算差错反馈结果至支付 -->
+	<bean id="IBPSResultFeedBackProcessor" class="com.huateng.ebank.business.common.TaskProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>IBPS</value>
+		</property>
+		<property name="serverSystem">
+			<value>IBPS</value>
+		</property>
+	</bean>
+	
+	<!-- 差错调整任务分解 -->
+	<bean id="TaskAssignServiceMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="TaskAssignService"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doAssignTask</value>
+		</property>
+	</bean>
+	
+	<!-- 支付调账方法 -->
+	<bean id="APSAcctAdjustProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="APSAcctAdjustProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForAcctAdjust</value>
+		</property>
+	</bean>
+	
+	<!-- 横联调账方法 -->
+	<bean id="TIPSAcctAdjustProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="TIPSAcctAdjustProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForAcctAdjust</value>
+		</property>
+	</bean>
+	
+	<!-- 网银跨行清算调账方法 -->
+	<bean id="IBPSAcctAdjustProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="IBPSAcctAdjustProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForAcctAdjust</value>
+		</property>
+	</bean>
+	
+	<!-- 灵活调账方法 -->
+	<bean id="FlexibleAcctAdjustProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="FlexibleAcctAdjustProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForFlexibleAcctAdjust</value>
+		</property>
+	</bean>
+	
+	<!-- 支付反馈方法 -->
+	<bean id="APSResultFeedBackProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="APSResultFeedBackProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForResultFeedBack</value>
+		</property>
+	</bean>
+	
+	<!-- 横联反馈方法 -->
+	<bean id="TIPSResultFeedBackProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="TIPSResultFeedBackProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForResultFeedBack</value>
+		</property>
+	</bean>
+	
+	<!-- 网银清算反馈方法 -->
+	<bean id="IBPSResultFeedBackProcessorMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="IBPSResultFeedBackProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doTaskForResultFeedBack</value>
+		</property>
+	</bean>
+	
+	<!-- 差错调整任务分解 -->
+	<bean id="TaskAssignServiceTrigger" class="com.huateng.tools.OmCronTriggerBean">
+		<property name="scheduleMgr">
+            <ref bean="ScheduleInfoManager" />
+        </property>
+        <property name="beanId">
+            <value>TaskAssignServiceTrigger</value>
+        </property>
+		<!--
+		<property name="repeatInterval">
+			<value>60000</value>
+		</property>
+		-->
+		<property name="jobDetail">
+			<ref bean="TaskAssignServiceMethod"/>
+		</property>
+    </bean>
+	
+	<!-- 支付调账任务 -->
+	<bean id="APSAcctAdjustProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="APSAcctAdjustProcessorMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>APSAcctAdjustProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0/1 6-22 * * ?</value>
+       </property>
+       -->
+    </bean>
+    
+    <!-- 横联调账任务 -->
+    <bean id="TIPSAcctAdjustProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="TIPSAcctAdjustProcessorMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>TIPSAcctAdjustProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0/1 6-22 * * ?</value>
+       </property>
+       -->
+    </bean>
+    
+    <!-- 网银跨行清算调账任务 -->
+    <bean id="IBPSAcctAdjustProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="IBPSAcctAdjustProcessorMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>IBPSAcctAdjustProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0/1 6-22 * * ?</value>
+       </property>
+       -->
+    </bean>
+    
+    <!-- 灵活调账任务 -->
+	<bean id="FlexibleAcctAdjustProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="FlexibleAcctAdjustProcessorMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>FlexibleAcctAdjustProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0/1 6-22 * * ?</value>
+       </property>
+       -->
+    </bean>   
+
+    <!-- 支付反馈任务 -->
+    <bean id="APSResultFeedBackProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="APSResultFeedBackProcessorMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>APSResultFeedBackProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0 10,12,14,16,18,20,22 * * ?</value>
+       </property>
+       -->
+    </bean>
+    
+    <!-- 横联反馈任务 -->
+    <bean id="TIPSResultFeedBackProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="TIPSResultFeedBackProcessorMethod" />
+       </property>
+        <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>TIPSResultFeedBackProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0 10,12,14,16,18,20,22 * * ?</value>
+       </property>
+       -->
+    </bean>	
+    
+    <!-- 网银清算反馈任务 -->
+    <bean id="IBPSResultFeedBackProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="IBPSResultFeedBackProcessorMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>IBPSResultFeedBackProcessorTrigger</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0 10,12,14,16,18,20,22 * * ?</value>
+       </property>
+       -->
+    </bean>
+</beans>

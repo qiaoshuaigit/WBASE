@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xdoc version="6.9.7">
+  <meta author="test" modifyDate="2014-09-24 13:52:25" createDate="2014-06-13 14:33:45"></meta>
+  <paper width="700" height="1060" topMargin="96" leftMargin="96" rightMargin="96" bottomMargin="96"/>
+  <body>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text fontName="宋体" fontStyle="bold" fontSize="20">网银清算差错调账汇总凭证</text>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para>
+      <text> </text>
+      <table cols="159,325" height="120" name="e222" left="116" sizeType="autosize" top="232" width="484" rows="30,30,30,30">
+        <cell name="e225" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center" fontSize="16">账务日期</text>
+          </para>
+        </cell>
+        <cell col="2" name="e229" align="center">
+          <para align="center">
+            <text>${ACCOUNT_DATE}</text>
+          </para>
+        </cell>
+        <cell name="e226" align="center" row="2">
+          <para align="center">
+            <text fontName="宋体" valign="center" fontSize="16">差错金额</text>
+          </para>
+        </cell>
+        <cell col="2" name="e230" align="center" row="2">
+          <para align="center">
+            <text>${TOT_AMOUNT}</text>
+          </para>
+        </cell>
+        <cell name="e227" align="center" row="3">
+          <para align="center">
+            <text fontName="宋体" valign="center" fontSize="16">手续费金额</text>
+          </para>
+        </cell>
+        <cell col="2" name="e231" align="center" row="3">
+          <para align="center">
+            <text valign="center">${ERR_FEE}</text>
+          </para>
+        </cell>
+        <cell name="e228" align="center" row="4">
+          <para align="center">
+            <text fontName="宋体" valign="center" fontSize="16">笔数</text>
+          </para>
+        </cell>
+        <cell col="2" name="e232" align="center" row="4">
+          <para align="center">
+            <text>${DTL_COUNT}</text>
+          </para>
+        </cell>
+      </table>
+    </para>
+  </body>
+</xdoc>

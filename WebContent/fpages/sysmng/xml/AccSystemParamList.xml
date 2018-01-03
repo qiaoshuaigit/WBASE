@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="机构级别查询" navigate="主页 &gt; 系统管理 &gt; 机构级别查询" type="call"
+	interface="true" pagesize="10" async="true" databusid="BrhClassList"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.AccSystemParamListGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="accsystemCode" desc="接入系统编号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="20" method="None"
+			status="F" default="" xpath="/accsystemCode" />
+
+		<Field id="accsystemName" desc="接入系统名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="50" method="None"
+			status="F" default="" xpath="/accsystemName" />
+			
+		<Field id="accsystemInfo" desc="接入系统名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="50" method="None"
+			status="F" default="" xpath="/accsystemInfo" />
+	</Fields>
+	<Parameters></Parameters>
+	<Where></Where>
+	<Operations></Operations>
+	<Script></Script>
+</CommQry>

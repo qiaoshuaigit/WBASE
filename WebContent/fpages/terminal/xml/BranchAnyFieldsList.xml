@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 筛选当前机构及其下属机构 -->
+<CommQry title="机构查询" navigate="主页 &gt; 系统管理 &gt; 机构查询" type="call"
+	interface="true" pagesize="10" async="true" databusid="BranchList"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.BranchAnyFieldsListGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="brhNo" desc="机构号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="9" method="None"
+			status="F" default="" xpath="/brhNo" />
+
+		<Field id="brhName" desc="机构名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/brhName" />
+			
+		<Field id="brhNoName" desc="机构名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/brhNoName" />
+			
+		<Field id="organ4Cup" desc="银联机构号" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/organ4Cup" />	
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value=""/>
+		<Parameter id="brhClass" value=""/>
+	</Parameters>
+	<Where></Where>
+	<Operations></Operations>
+	<Script></Script>
+</CommQry>

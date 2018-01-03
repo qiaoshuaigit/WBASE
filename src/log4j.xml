@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{yyyy-MM-dd HH\:mm\:ss\:SSS}]%-5p %c(line\:%L) %x- %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="RUNTIME"
+		class="com.huateng.tools.OmRollingFileAppender">
+		<param name="File" value="/home/eps/log/yyyyMMdd/runtime.log" />
+		<param name="Encoding" value="GB18030" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="50" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss\:SSS}]%-5p %c(line\:%L) %x- %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="INFO" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+	</appender>
+	
+	<appender name="APPERROR"
+		class="com.huateng.tools.OmRollingFileAppender">
+		<param name="File" value="/home/eps/log/yyyyMMdd/apperror.log" />
+		<param name="Encoding" value="GB18030" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="50" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss\:SSS}]%-5p %c(line\:%L) %x- %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="ERROR" />
+		</filter>
+	</appender>
+	
+	<appender name="ESB"
+		class="com.huateng.tools.OmRollingFileAppender">
+		<param name="File" value="/home/eps/log/yyyyMMdd/esb.log" />
+		<param name="Encoding" value="GB18030" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="5MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss\:SSS}]%-5p %c(line\:%L) %x- %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="QuartzLogAppender"
+		class="com.huateng.tools.OmRollingFileAppender">
+		<param name="File" value="/home/eps/log/yyyyMMdd/quartz.log" />
+		<param name="Encoding" value="GB18030" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="50" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss\:SSS}]%-5p %c(line\:%L) %x- %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="DAOMonitorLogAppender"
+		class="com.huateng.tools.OmRollingFileAppender">
+		<param name="File" value="/home/eps/log/yyyyMMdd/DAOMonitor.log" />
+		<param name="Encoding" value="GB18030" />
+		<param name="Append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="50" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH\:mm\:ss\:SSS}] %m%n" />
+		</layout>
+	</appender>
+	
+	<logger name="spc.webos" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ESB" />
+	</logger>
+	
+	<logger name="spc.esb" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="ESB" />
+	</logger>
+	
+	<logger name="Quartz" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="QuartzLogAppender" />
+	</logger>
+	
+	<logger name="DAOMonitor" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="DAOMonitorLogAppender" />
+	</logger>
+	
+	<logger name="org.directwebremoting.impl.DefaultRemoter">
+		<level value="WARN"/>
+	</logger>
+	
+	<root>
+		<priority value="INFO" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="RUNTIME" />
+		<appender-ref ref="APPERROR" />
+	</root>
+
+</log4j:configuration>

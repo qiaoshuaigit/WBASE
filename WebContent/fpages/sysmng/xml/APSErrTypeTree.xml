@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="支付系统差错类型" navigate="主页 &gt; 支付系统差错类型" type="call"
+	interface="true" pagesize="10" async="true" databusid="APSErrType"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.APSErrTypeGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="treeCode" desc="树节点编号" edittype="text" datatype="string" 
+			require="false" readonly="true" primary="true" size="20" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="codeValue" desc="参数值" tip="参数值" edittype="text" datatype="string"
+			require="true" readonly="true" primary="false" size="30" method="None"
+			status="F" default="" xpath="/codeValue" />
+			
+		<Field id="codeName" desc="参数说明" tip="参数说明" edittype="text" datatype="string"
+			require="true" readonly="true" primary="false" size="100" method="None"
+			status="F" default="" xpath="/codeName" />
+			
+		<Field id="_level_" desc="树形层次" status="F" edittype="" method="None" readOnly="" require="" datatype="int"
+			primary="false" type="string" size="" scale=""  default="" tip="树形层次" xpath="/level" width=""/>
+			
+		<Field id="_canSelected_" desc="能否选择" status="F" edittype="" method="None" readOnly="" require="" datatype="boolean"
+			primary="false" type="string" size="" scale=""  default="" tip="能否选择" xpath="/canSelected" width=""/>
+			
+		<Field id="_hasChild_" desc="是否有孩子结点" status="F" edittype="" method="None" readOnly="" require="" datatype="boolean"
+			primary="false" type="string" size="" scale=""  default="" tip="是否有孩子结点" xpath="/hasChild" width=""/>
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+	</Operations>
+	<Script></Script>
+</CommQry>

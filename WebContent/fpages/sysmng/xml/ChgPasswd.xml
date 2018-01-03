@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="修改密码" navigate="主页 &gt; 系统管理 &gt; 修改密码" type="call"
+	interface="true" pagesize="20" async="true" databusid="ChgPasswd"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.ChgPasswdGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+		
+		<Field id="oprNo" desc="用户号" tip="用户号" edittype="text" datatype="string"
+			require="true" readonly="true" primary="false" size="20" method="None"
+			status="F" default="" xpath="/oprNo" />
+			
+		<Field id="userName" desc="用户名" tip="用户名" edittype="text" datatype="string"
+			require="true" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/userName" />
+			
+		<Field id="oldPasswd" desc="旧密码" tip="旧密码" edittype="password" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/oldPasswd" />
+			
+		<Field id="newPasswd1" desc="新密码" tip="新密码" edittype="password" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/newPasswd1" />
+			
+		<Field id="newPasswd2" desc="确认密码" tip="确认密码" edittype="password" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/newPasswd2" />
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.ChgUserPasswdUpdater" />
+		<Button id="btnCancel" name="btnCancel" desc="取消" operation="" />
+	</Operations>
+	<Script></Script>
+</CommQry>

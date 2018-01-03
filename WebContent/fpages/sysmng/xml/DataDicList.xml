@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="数据字典" navigate="主页 &gt; 数据字典参数" type="call"
+	interface="true" pagesize="10" async="true" databusid="DataDicList"
+	transdataactionurl="/trans/TransDataAction.do" getterclassname="com.huateng.stl4j.getter.DataDicListGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="id" desc="ID" edittype="text" datatype="int" require="false"
+			readonly="true" primary="true" size="10" method="None" status="F"
+			default="" xpath="/id" />
+		<Field id="dataNo" desc="参数值" tip="参数值" edittype="text"
+			datatype="string" require="true" readonly="true" primary="false"
+			size="30" method="None" status="F" default="" xpath="/dataNo" />
+		<Field id="dataName" desc="类型名称" tip="类型名称" edittype="text"
+			datatype="string" require="true" readonly="true" primary="false"
+			size="100" method="None" status="F" default="" xpath="/dataName" />
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value=""/>
+	</Parameters>
+	<Where />
+	<Operations />
+	<Script></Script>
+</CommQry>

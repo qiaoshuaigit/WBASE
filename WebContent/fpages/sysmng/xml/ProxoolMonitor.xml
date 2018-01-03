@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="连接池监控" navigate="主页 &gt; 系统管理 &gt; 连接池监控" type="call"
+	interface="true" pagesize="10" async="true" databusid="ProxoolMonitor"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.proxool.ProxoolMonitorGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/sysmng/ftl/ProxoolMonitor.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="key" desc="对象名称" tip="对象名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="20" method="None"
+			status="F" default="" xpath="/key" />
+		<Field id="value" desc="当前值" tip="当前值" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="20" method="None"
+			status="F" default="" xpath="/value" />
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnMonitor" name="btnMonitor" desc="Proxool AdminServlet" operation="" />
+		<Button id="btnRefresh" name="btnRefresh" desc="刷新" operation="" />
+	</Operations>
+	<Script></Script>
+</CommQry>

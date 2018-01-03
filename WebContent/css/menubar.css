@@ -1,0 +1,96 @@
+* {
+	margin: 0;
+}
+
+body,div,td,th {
+	font-family: simsun, 'ËÎÌå', 'ÐÂËÎÌå', sans-serif;
+	font-size: 12px;
+	color: #303030;
+	line-height: 180%;
+}
+
+div,form,img {
+	padding: 0;
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:link,a:visited {
+	color: #303030;
+}
+
+a:hover,a:active {
+	color: #0060C0;
+	text-decoration: underline;
+}
+
+.sp-nav {
+	overflow: hidden;
+	background: url(../images/menubar.png) repeat-x 0 -175px;
+	height: 31px;
+	line-height: 31px;
+}
+
+.sp-con {
+	color: #C0C0C0;
+	margin: 0 auto;
+	width: 932px;
+}
+
+.sp-l {
+	overflow: hidden;
+	float: left;
+	background: url(../images/menubar.png) no-repeat 0 -63px;
+	width: 6px;
+	height: 31px
+}
+
+.sp-r {
+	overflow: hidden;
+	float: right;
+	background: url(../images/menubar.png) no-repeat -6px -63px;
+	width: 6px;
+	height: 31px
+}
+
+.sp-m {
+	position: relative;
+	padding: 0 10px;
+	float: left;
+	background: url(../images/menubar.png) repeat-x 0 0;
+	height: 31px;
+	line-height: 31px;
+	width: 900px;
+	color: #303030
+}
+
+.sp-m .span {
+	position: absolute;
+	top: 2px;
+	right: 10px;
+	color: #113593;
+}
+/**
+.sp-m span a {
+	margin-left: 3px
+}
+
+.sp-m span strong {
+	color: #113593
+}
+*/
+.sp-m a,.sp-m a:visited {
+	color: #303030;
+	text-decoration: none
+}
+
+.sp-m a:hover {
+	color: #C03000
+}
+/*
+body {
+	background: #f1f1f1;
+}*/

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="ESB-MQ联通性检查" navigate="主页 &gt; 系统管理 &gt; ESB-MQ联通性检查"
+	type="call" interface="true" databusid="quartzManager"
+	transdataactionurl="/trans/TransDataAction.do" async="true"
+	pagesize="10" getterclassname="com.huateng.stl4j.getter.ESBMQCheckGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="ip" xpath="/ip" desc="IP地址" tip="IP地址" size="40"
+			edittype="text" datatype="string" require="false" readonly="true" init="false" />
+		<Field id="port" xpath="/port" desc="端口" tip="端口"  size="10"
+			edittype="text" datatype="string" require="false" readonly="true"
+			init="false" />
+		<Field id="status" xpath="/status" desc="联通性" tip="联通性"  size="40"
+			edittype="text" datatype="string" require="false" readonly="true"
+			init="false" />
+	</Fields>
+	<Parameters />
+	<Where />
+	<Operations>
+		<Button id="refreshBtn" name="刷新" desc="刷新" url="#" />
+	</Operations>
+</CommQry>

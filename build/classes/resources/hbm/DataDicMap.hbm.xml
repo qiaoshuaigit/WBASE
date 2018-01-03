@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.ebank.entity">
+	<class lazy="false" 
+		name="DataDicMap"
+		table="W_DATA_DIC_MAP"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="sequence">
+				<param name="sequence">SEQ_ID_DATA_DIC_MAP</param>
+			</generator>
+        </id>
+
+		<property
+			name="mapType"
+			column="MAP_TYPE"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="incode"
+			column="INCODE"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="outcode"
+			column="OUTCODE"
+			type="string"
+			not-null="false"
+			length="30"
+		/>
+		<property
+			name="incodeLen"
+			column="INCODE_LEN"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="outcodeLen"
+			column="OUTCODE_LEN"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

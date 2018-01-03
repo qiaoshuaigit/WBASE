@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.ebank.entity">
+	<class lazy="false" 
+		name="DataDic"
+		table="W_DATA_DIC"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="sequence">
+				<param name="sequence">SEQ_ID_DATA_DIC</param>
+			</generator>
+        </id>
+
+		<property
+			name="dataTypeNo"
+			column="DATA_TYPE_NO"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="dataNo"
+			column="DATA_NO"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="dataTypeName"
+			column="DATA_TYPE_NAME"
+			type="string"
+			not-null="false"
+			length="60"
+		/>
+		<property
+			name="dataNoLen"
+			column="DATA_NO_LEN"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="dataName"
+			column="DATA_NAME"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="limitFlag"
+			column="LIMIT_FLAG"
+			type="string"
+			not-null="false"
+			length="1"
+		/>
+		<property
+			name="highLimit"
+			column="HIGH_LIMIT"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="lowLimit"
+			column="LOW_LIMIT"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

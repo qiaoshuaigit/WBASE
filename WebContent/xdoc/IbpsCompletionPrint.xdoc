@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xdoc version="6.9.7">
+  <meta author="test" modifyDate="2014-06-13 15:59:11" createDate="2014-06-13 15:19:01"></meta>
+  <paper width="1060" height="700" topMargin="96" leftMargin="96" rightMargin="96" bottomMargin="96"/>
+  <back align="center"/>
+  <body>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <text fontName="宋体" valign="center" fontSize="20">网银清算差错调账凭证</text>
+    </para>
+    <para align="center">
+      <text/>
+    </para>
+    <para align="center">
+      <table cols="229,229,229,229" height="44" name="e2176" left="116" sizeType="autosize" top="162" align="center" width="916" rows="22,22">
+        <cell name="e2179" align="center">
+          <para>
+            <text fontName="宋体" valign="center">原交易日期</text>
+          </para>
+        </cell>
+        <cell col="2" name="e2180" align="center">
+          <para>
+            <text fontName="宋体" valign="center">TXN_DATE</text>
+          </para>
+         </cell>
+        <cell col="3" name="e2181" align="center">
+          <para>
+            <text fontName="宋体" valign="center">发起行行号</text>
+          </para>
+        </cell>
+        <cell col="4" name="e2182" align="center">
+          <para>
+            <text fontName="宋体" valign="center">REQ_BANK_NO</text>
+          </para>
+         </cell>
+        <cell name="e2183" align="center" row="2">
+          <para>
+            <text fontName="宋体" valign="center">原交易流水号</text>
+          </para>
+        </cell>
+        <cell col="2" name="e2184" row="2" align="center">
+          <para>
+            <text fontName="宋体" valign="center">ORG_TXN_SEQ</text>
+          </para>
+         </cell>
+        <cell col="3" name="e2185" align="center" row="2">
+          <para>
+            <text fontName="宋体" valign="center">原交易金额</text>
+          </para>
+        </cell>
+        <cell col="4" name="e2186" row="2" align="center">
+          <para>
+            <text fontName="宋体" valign="center">ORG_TXN_AMT</text>
+          </para>
+         </cell>
+      </table>
+    </para>
+    <para align="center">
+      <table cols="229,687" height="24" name="e2774" left="116" sizeType="autosize" top="206" align="center" width="916" rows="24">
+        <cell name="e2777" align="center">
+          <para>
+            <text fontName="宋体" valign="center">差错类型</text>
+          </para>
+        </cell>
+        <cell col="2" name="e2778" sizeType="autoheight" align="center">
+          <para>
+            <text fontName="宋体" valign="center">ERR_TYPE</text>
+          </para>
+         </cell>
+      </table>
+    </para>
+    <para align="center">
+      <table cols="101,50,125,133,101,101,101,101,103" height="24" name="e3617" left="116" sizeType="autosize" top="230" align="center" width="916" rows="24">
+        <cell name="e3620" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">账务类型</text>
+          </para>
+        </cell>
+        <cell col="2" name="e3621" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">借/贷</text>
+          </para>
+        </cell>
+        <cell col="3" name="e3622" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">户名</text>
+          </para>
+        </cell>
+        <cell col="4" name="e3623" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">账户</text>
+          </para>
+        </cell>
+        <cell col="5" name="e3624" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">开户机构</text>
+          </para>
+        </cell>
+        <cell col="6" name="e3625" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">金额</text>
+          </para>
+        </cell>
+        <cell col="7" name="e3626" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">差错流水号</text>
+          </para>
+        </cell>
+        <cell col="8" name="e3627" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">核心流水</text>
+          </para>
+        </cell>
+        <cell col="9" name="e3628" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">账务日期</text>
+          </para>
+        </cell>
+      </table>
+    </para>
+    <para align="center">
+      <table cols="101,50,125,133,101,101,101,101,103" height="24" name="e4617" left="116" sizeType="autosize" top="274" align="center" width="916" rows="24">
+        <cell name="e3620" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">ACC_TYPE</text>
+          </para>
+        </cell>
+        <cell col="2" name="e3621" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">D_OR_C</text>
+          </para>
+        </cell>
+        <cell col="3" name="e3622" sizeType="autoheight" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">ACCT_NAME</text>
+          </para>
+        </cell>
+        <cell col="4" name="e3623" sizeType="autoheight" align="center" padding="7">
+          <para align="center">
+            <text fontName="宋体" valign="center">ACCT_ID</text>
+          </para>
+        </cell>
+        <cell col="5" name="e3624" sizeType="autoheight" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">OPEN_BRANCH</text>
+          </para>
+        </cell>
+        <cell col="6" name="e3625" sizeType="autoheight" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">AMOUNT</text>
+          </para>
+        </cell>
+        <cell col="7" name="e3626" sizeType="autoheight" align="center" padding="7">
+          <para align="center">
+            <text fontName="宋体" valign="center">EPS_TXN_SEQ</text>
+          </para>
+        </cell>
+        <cell col="8" name="e3627" sizeType="autoheight" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">HX_TXN_SEQ</text>
+          </para>
+        </cell>
+        <cell col="9" name="e3628" sizeType="autoheight" align="center">
+          <para align="center">
+            <text fontName="宋体" valign="center">ACCT_DATE</text>
+          </para>
+        </cell>
+      </table>
+    </para>
+    <para>
+      <text fontName="宋体" valign="center"> 打印次数：PRINT_COUNT    操作员：OPR_LIST</text>
+    </para>
+  </body>
+</xdoc>

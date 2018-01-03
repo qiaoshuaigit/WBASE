@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+  "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="driver">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		<property name="driverUrl">
+		 <value>jdbc:oracle:thin:@10.172.50.2:1521:gtdb</value>
+		</property>
+		<property name="user">
+			<value>gfront1</value>
+		</property>
+		<property name="password">
+			<value>gfront1</value>
+		</property>
+		<property name="alias">
+			<value>proxoolPool</value>
+		</property>
+   		<property name="prototypeCount">
+   			<value>2</value>
+   		</property>
+	    <property name="maximumConnectionCount">
+	    	<value>10</value>
+	    </property>
+	    <property name="minimumConnectionCount">
+	    	<value>2</value>
+	    </property>
+	    <property name="trace">
+	    	<value>false</value>
+	    </property>
+	    <property name="verbose">
+	    	<value>true</value>
+	    </property>
+	    <property name="testBeforeUse">
+	    	<value>false</value>
+	    </property>
+	</bean>
+
+	<bean id="entityInterceptor"
+		class="com.huateng.stl4j.common.HibernateInterceptor">
+	</bean>
+
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="entityInterceptor">
+			<ref local="entityInterceptor" />
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:resources/hbm/*.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+            <props><!-- org.hibernate.dialect.DB2Dialect -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <!-- prop key="hibernate.format_sql">true</prop -->
+                <!-- prop key="hibernate.use_sql_comments">true</prop -->
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <prop key="hibernate.jdbc.batch_size">200</prop>
+            </props>
+        </property>
+	</bean>
+
+	<bean id="myTransactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="mySessionFactory" />
+		</property>
+	</bean>
+
+	<bean id="operationCaller" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="myTransactionManager"/>
+        </property>
+        <property name="target">
+            <bean id="CallerTarget" class="com.huateng.stl4j.common.OPCaller"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="callOperation">PROPAGATION_REQUIRED,-Exception</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="singleCaller" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="myTransactionManager"/>
+        </property>
+        <property name="target">
+            <bean id="SingleCallerTarget" class="com.huateng.stl4j.common.SingleOPCaller">
+		</bean>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="callOperation">PROPAGATION_REQUIRES_NEW,-Exception</prop>
+            </props>
+        </property>
+    </bean>
+
+	<bean id="CommonDAO"
+		class="com.huateng.stl4j.common.CommonDAO">
+		<property name="sessionFactory">
+			<ref bean="mySessionFactory" />
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean >
+	<import resource="applicationContext-schedule.xml" /> 
+</beans>

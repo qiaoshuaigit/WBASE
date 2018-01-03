@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 本配置只用于BOD SCHEDULE  -->
+<beans>
+	<bean id="BODInitProcessor" class="com.huateng.ebank.business.common.BODInitProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="BODInitProcessorJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="BODInitProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>bodInitProcess</value>
+		</property>
+	</bean>
+
+	<bean id="BODInitProcessorTrigger" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="BODInitProcessorJobDetail" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>BODInitProcessorTrigger</value>
+       </property>
+    </bean>
+</beans>

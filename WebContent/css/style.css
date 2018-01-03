@@ -1,0 +1,63 @@
+html {
+	scrollbar-3dlight-color:gray;
+	scrollbar-arrow-color:black;
+	scrollbar-base-color:#cccccc;
+	scrollbar-darkshadow-color:white;
+}
+
+.tiptitle
+{
+	color:#006C00;
+	font-size:16px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.errtitle
+{
+	color:#BE0000;
+	font-size:16px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.tipinfo
+{
+	color:#009C00;
+	font-size:14px;
+}
+
+.tipinfo ul
+{
+	margin:0px;
+	margin-left:125px;
+	padding:0px;
+}
+
+.errinfo
+{
+	color:#050000;
+	font-size:14px;
+}
+
+.errinfo ul
+{
+	margin:0px;
+	margin-left:125px;
+	padding:0px;
+}
+
+.errtable
+{
+	color:#050000;
+	font-size:14px;
+	text-align:center;
+}
+
+.textarea_editor
+{
+	scrollbar-3dlight-color:gray;
+	scrollbar-arrow-color:black;
+	scrollbar-base-color:#cccccc;
+	scrollbar-darkshadow-color:white;
+}

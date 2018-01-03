@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="权限管理" navigate="主页 &gt; 系统管理 &gt; 权限管理" type="call"
+	interface="true" pagesize="10" async="true" databusid="RoleFuncRelation"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnSelectAll" name="btnSelectAll" desc="全选" operation="" />
+		<Button id="btnSelectNone" name="btnSelectNone" desc="全不选" operation="" />
+		<Button id="btnSaveRoleFuncRelation" name="btnSaveRoleFuncRelation" desc="保存" operation="" />
+	</Operations>
+	<Script></Script>
+</CommQry>
+	

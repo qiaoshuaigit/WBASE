@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.ebank.entity">
+	<class lazy="false" 
+		name="FunctionInfo"
+		table="W_FUNCTION_INFO"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" type="java.lang.Integer">
+            <column name="FUNC_CODE" />
+            <generator class="assigned" />
+        </id>
+
+		<property
+			name="funcName"
+			column="FUNC_NAME"
+			type="string"
+			not-null="false"
+			length="60"
+		/>
+		<property
+			name="pagePath"
+			column="PAGE_PATH"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+		<property
+			name="location"
+			column="LOCATION"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="isDirectory"
+			column="IS_DIRECTORY"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="lastDirectory"
+			column="LAST_DIRECTORY"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="showseq"
+			column="SHOWSEQ"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="isShow"
+			column="ISSHOW"
+			type="string"
+			not-null="false"
+			length="1"
+		/>
+
+	</class>	
+</hibernate-mapping>

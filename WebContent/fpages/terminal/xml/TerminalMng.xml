@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="终端管理" navigate=" &gt; 主页 &gt; 终端管理 &gt; 终端管理"
+	type="call" interface="true" pagesize="10" async="true" databusid="BranchMng"
+	transdataactionurl="/trans/TransDataAction.do" getterclassname="com.huateng.stl4j.getter.TerminalMngGetter">
+	<Include id="BankParam" />
+	<ResultViewParam>
+		/fpages/terminal/ftl/TerminalMng.ftl
+	</ResultViewParam>
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示 -->
+		<!-- primary : true-作为表单项记录上传 false-不作为表单项上传 -->
+		<Field id="terminalCode" desc="终端代码" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="10" method="None"
+			status="F" default="" xpath="/terminalCode" />
+		<Field id="termType" desc="终端类型" tip="终端类型" edittype="text"
+			datatype="string" require="false" readonly="true" primary="false"
+			size="9" method="None" status="F" defaultvalue="SST" xpath="/termType" />
+
+		<Field id="brno" desc="所属机构" tip="所属名称" edittype="select"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" translated="CQ:BranchAnyFieldsList" fieldmap="brno=brhNo;brnoName=brhName"
+			viewfield="brhName" dropdowntype="dynamic" status="F" default=""
+			xpath="/brno" colspan="4" width="432" />
+		<Field id="brnoName" desc="所属机构名称" tip="所属机构名称" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/brnoName" />
+
+		<Field id="netCode" desc="营业网点" tip="营业网点" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/netCode" />
+		<Field id="cupOrgan" desc="银联机构号" tip="银联机构号" edittype="select"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" translated="DATA_DIC.100002" status="F"
+			default="" xpath="/cupOrgan" />
+
+		<Field id="termSt" desc="状态" tip="状态" edittype="select"
+			datatype="string" require="false" readonly="true" primary="false"
+			size="1" method="None" translated="LIST:1,1-停用;2,2-启用;3,3-新增;4,4-修改"
+			status="F" default="" xpath="/termSt" />
+		<Field id="tlrno" desc="柜员号" tip="柜员号" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/tlrno" />
+		<Field id="address" desc="摆放地址" tip="摆放地址" edittype="text"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/address"
+			colspan="4" width="432" />
+		<Field id="terminalVendor" desc="ATM厂商" tip="ATM厂商" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/terminalVendor" />
+		<Field id="termVendorNm" desc="ATM厂商名称" tip="ATM厂商名称" edittype="text"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/termVendorNm" />
+		<Field id="commAddr" desc="通讯地址" tip="通讯地址" edittype="text"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/commAddr"
+			colspan="4" width="432" />
+		<Field id="softverNo" desc="软件版本号" tip="软件版本号" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/softverNo" />
+		<Field id="cardBinNo" desc="参数版本号" tip="参数版本号" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/cardBinNo" />
+		<Field id="commPid" desc="ATM通讯进程号" tip="ATM通讯进程号" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/commPid" />
+		<Field id="commRule" desc="ATM通讯规则" tip="ATM通讯规则" edittype="text"
+			datatype="string" require="false" readonly="true" primary="false"
+			size="60" method="None" status="F" defaultvalue="tcp" xpath="/commRule" />
+		<Field id="conntIpAddr" desc="ATM连接主机IP" tip="ATM连接主机IP"
+			edittype="text" datatype="string" require="false" readonly="false"
+			primary="false" size="60" method="None" status="F" default=""
+			xpath="/conntIpAddr" />
+		<Field id="startDate" desc="初始摆放日期" tip="初始摆放日期" edittype="date"
+			datatype="date" require="true" readonly="false" primary="false" size="60"
+			method="None" status="F" default="" xpath="/startDate" />
+		<Field id="batchNumber" desc="ATM批次" tip="ATM批次" edittype="text"
+			datatype="string" require="false" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/batchNumber" />
+		<Field id="ipAddress" desc="ATM机具IP地址" tip="ATM机具IP地址" edittype="text"
+			datatype="string" require="true" readonly="false" primary="false"
+			size="60" method="None" status="F" default="" xpath="/ipAddress" />
+		<Field id="chkDsc" desc="审核描述" tip="审核描述" edittype="textarea"
+			datatype="string" require="false" readonly="true" primary="false"
+			size="512" method="None" status="F" default="" xpath="/chkDsc"
+			colspan="4" height="50" width="432" />
+		<Field id="chkStatus" desc="审核状态" tip="审核状态" edittype="select"
+			datatype="string" require="false" readonly="true" primary="false"
+			size="60" method="None"
+			translated="LIST:1,1-停用待审核;2,2-启用待审核;3,3-新增待审核;4,4-修改待审核;5,5-停用审核通过;6,6-启用审核通过;7,7-新增审核通过;8,8-修改审核通过;9,9-停用审核拒绝;10,10-启用审核拒绝;11,11-新增审核拒绝;12,12-修改审核拒绝"
+			status="F" default="" xpath="/chkStatus" colspan="4" />
+	</Fields>
+	<Parameters>
+		<Parameter id="value" value="" />
+	</Parameters>
+	<Where>
+		<TextBox id="terminalCodeWhere" fieldname="terminalCodeWhere"
+			datatype="string" edittype="text" method="None" require="false"
+			readonly="false" init="false" default="" size="9" width="" desc="终端代码"
+			tip="终端代码" index="1" />
+		<Option id="termStWhere" fieldname="termStWhere" desc="状态"
+			tip="状态"
+			translated="LIST:1,1-停用;2,2-启用;3,3-新增;4,4-修改"
+			edittype="select" datatype="string" require="false" init="true"
+			default="" size="10" />
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit 
+			) -->
+		<Button id="btnAdd" name="btnAdd" desc="新增" operation="addrecord" />
+		<Button id="btnDel" name="btnDel" desc="删除" operation="delrecord" />
+		<Button id="btnSave" name="btnSave" desc="保存" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveTerminalMngUpdater" />
+		<Button id="btnUp" name="btnUp" desc="启用" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveTerminalUpDwonUpdater" />
+		<Button id="btnDwon" name="btnDwon" desc="停用" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveTerminalUpDwonUpdater" />
+		<Button id="btnPass" name="btnPass" desc="审核通过" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveTerminalUpDwonUpdater" />
+		<Button id="btnFail" name="btnFail" desc="审核拒绝" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.SaveTerminalUpDwonUpdater" />		
+	</Operations>
+	<Script></Script>
+</CommQry>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="审批路线明细" navigate="主页 &gt; 系统管理 &gt; 接入系统接口设置" type="call"
+	interface="true" databusid="AccSystemCfg"
+	transdataactionurl="/trans/TransDataAction.do" async="true"
+	pagesize="10" getterclassname="com.huateng.stl4j.getter.AccSystemCfgGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="id" xpath="/id" desc="ID" edittype="text"
+			datatype="int" require="false" readonly="true" size="10"
+			init="false" />
+		<Field id="accsystemCode" desc="接入系统编号" tip="接入系统编号" edittype="select" datatype="string"
+			require="true" readonly="true" primary="false" size="20" method="None" 
+			translated="CQ:AccSystemParamList" fieldmap="accsystemCode=accsystemCode;accsystemCodeName=accsystemInfo" 
+			viewfield="accsystemInfo" dropdowntype="dynamic"  
+			status="F" default="" xpath="/accsystemCode" />
+		<Field id="accsystemCodeName" desc="接入系统名称" tip="接入系统名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="50" method="None"
+			status="F" default="" xpath="/accsystemCodeName" />
+		<Field id="errTypeName" desc="差错类型" tip="差错类型" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="50" method="None"
+			status="F" default="" xpath="/errTypeName" />	
+		<Field id="errType" desc="差错类型" require="true" tip="差错类型"
+			edittype="select" translated="CQ:DataDic3000List" fieldmap="errType=dataNo;errTypeName=dataName"
+			datatype="string" readonly="false" dropdowntype="dynamic" viewField="dataName"
+			size="20" init="false" xpath="/errType" />			
+		<Field id="jobNum" xpath="/jobNum" desc="作业号" readonly="false"
+			tip="作业号" edittype="text" datatype="string" require="true"
+			size="100" translated="" init="false" />
+		<Field id="taskNum" xpath="/taskNum" desc="任务号" readonly="false"
+			tip="任务号" edittype="text" datatype="string" require="true"
+			size="100" translated="" init="false" />
+		<Field id="serverSystem" xpath="/serverSystem" desc="服务方" readonly="false"
+			tip="服务方" edittype="text" datatype="string" require="true"
+			size="100" translated="" init="false" />
+		<Field id="serverSystem" desc="服务方" tip="服务方" edittype="select" datatype="string"
+			require="true" readonly="false" primary="false" size="20" method="None" 
+			translated="CQ:AccSystemParamList" fieldmap="serverSystem=accsystemCode;serverSystemName=accsystemInfo" 
+			viewfield="accsystemInfo" dropdowntype="dynamic"  
+			status="F" default="" xpath="/serverSystem" />
+		<Field id="serverSystemName" desc="服务方" tip="服务方" edittype="text" datatype="string"
+			require="false" readonly="true" primary="true" size="50" method="None"
+			status="F" default="" xpath="/serverSystemName" />
+		<Field id="interfaceType" xpath="/interfaceType" desc="接口类型" readonly="false"
+			tip="接口类型" edittype="select" datatype="string" require="true"
+			size="100" translated="DATA_DIC.2013" init="false" />	
+	</Fields>
+	<Parameters />
+	<Where />
+	<Operations>
+		<Button id="btnAddList" name="btnAddList" desc="新增"
+			operation="addrecord" url="#" />
+		<Button id="btnDelList" name="btnDelList" desc="删除"
+			operation="delrecord" url="#" />
+		<Button id="btnSaveList" name="btnSaveList" desc="保存"
+			operation="asysubmit" url="#" submitDataset="AccSystemCfg_dataset"
+			updateClass="com.huateng.stl4j.updater.SaveAccSystemCfgUpdater" />
+		
+	</Operations>
+</CommQry>

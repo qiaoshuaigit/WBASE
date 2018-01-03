@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>WBASE</display-name>
+	
+	<filter>
+		<filter-name>transfilter</filter-name>
+		<filter-class>
+			com.huateng.ebank.framework.web.TransFilter
+		</filter-class>
+		<init-param>
+			<param-name>LOGIN_REF</param-name>
+			<param-value>
+				SystemManager;flogin.jsp;login.do;expired.jsp;logout.do;login_bg.jpg;button.gif;info_f1.gif;info_f2.gif;info_f3.gif;info_f4.gif;info_f5.gif;info_f6.gif;info_f7.gif;info_f8.gif;info_f9.gif;info_f10.gif;info_f11.gif
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>EXPIRED_PAGE</param-name>
+			<param-value>/expired.jsp</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>GB18030</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>transfilter</filter-name>
+		<url-pattern>/trans/*</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>transfilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:resources/applicationContext.xml,
+			classpath:resources/business/**/*.xml
+		</param-value>
+	</context-param>
+	
+	<context-param>
+		<description>对话超时时间</description>
+		<param-name>sessionBetweenSessionTime</param-name>
+		<param-value>1800</param-value>
+	</context-param>
+		
+	<context-param>
+		<description>错误信息资源文件</description>
+		<param-name>errorMessage</param-name>
+		<param-value>resources/errorcode.properties</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>
+			com.huateng.stl4j.mvc.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			com.huateng.ebank.framework.servlet.listener.HttpSessionListener
+		</listener-class>
+	</listener>
+		
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>
+			org.apache.struts.action.ActionServlet
+		</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+				/WEB-INF/struts-config.xml,
+				/WEB-INF/struts-config/commQuery.xml
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>4</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>CommQueryInterfaceServlet</servlet-name>
+		<servlet-class>
+			com.huateng.ebank.framework.web.commQuery.BankCommQueryInterfaceServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CommQueryResultServlet</servlet-name>
+		<servlet-class>
+			com.huateng.ebank.framework.web.commQuery.BankCommQueryResultServlet
+		</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>commQuery</servlet-name>
+		<servlet-class>
+			com.huateng.ebank.framework.web.commQuery.BankCommQueryServlet
+		</servlet-class>
+		<init-param>
+			<param-name>CommonQueryConfigLocation</param-name>
+			<param-value>
+				/WEB-INF/query/meta/CommQryMeta.xml,
+				/WEB-INF/query/meta/BatchMngMeta.xml,
+				/WEB-INF/query/meta/SysMngMeta.xml,
+				/WEB-INF/query/meta/TerminalMeta.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>freemarker</servlet-name>
+		<servlet-class>
+			com.huateng.ebank.framework.servlet.BankHTFreemarkServlet
+		</servlet-class>
+		<init-param>
+			<param-name>TemplatePath</param-name>
+			<param-value>/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NoCache</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ContentType</param-name>
+			<param-value>text/html</param-value>
+		</init-param>
+		<init-param>
+			<param-name>template_update_delay</param-name>
+			<param-value>9</param-value><!-- 0 is for development only! Use higher value otherwise. -->
+		</init-param>
+		<init-param>
+			<param-name>default_encoding</param-name>
+			<param-value>GBK</param-value>
+		</init-param>
+		<init-param>
+			<param-name>number_format</param-name>
+			<param-value>0.##########</param-value>
+		</init-param>
+		<load-on-startup>3</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>
+			org.directwebremoting.servlet.DwrServlet
+		</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>activeReverseAjaxEnabled</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>
+				initApplicationScopeCreatorsAtStartup
+			</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>maxWaitAfterWrite</param-name>
+			<param-value>5000</param-value>
+		</init-param>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+ 
+	<servlet>
+		<servlet-name>proxool_Admin</servlet-name>
+		<servlet-class>com.huateng.proxool.AdminServlet</servlet-class>
+		<init-param>
+			<param-name>cssFile</param-name>
+			<param-value>/templets/lib/themes/default/extra.css</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet>
+    	<servlet-name>SQLServlet</servlet-name>
+    	<servlet-class>com.huateng.admin.SQLServlet</servlet-class>
+    	<init-param>
+			<param-name>dataSourceBeanId</param-name>
+			<param-value>dataSource</param-value>
+		</init-param>
+		<init-param>
+			<param-name>dbSchema</param-name>
+			<param-value>EPS</param-value>
+		</init-param>
+		<init-param>
+			<param-name>dbType</param-name>
+			<param-value>DB2</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>ProcessImageServlet</servlet-name>
+		<servlet-class>
+			com.huateng.ebank.business.workflow.ProcessImageServlet
+		</servlet-class>
+	</servlet>
+	
+ 	<servlet>
+    	<servlet-name>XDocServlet</servlet-name>
+    	<servlet-class>om.xdoc.common.XDocServlet</servlet-class>
+  	</servlet>
+	
+	<servlet>
+		<servlet-name>OnStartupServlet</servlet-name>
+		<servlet-class>com.huateng.ebank.common.OnStartupServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+    	<servlet-name>SystemManager</servlet-name>
+    	<servlet-class>com.huateng.admin.SystemManager</servlet-class>
+  	</servlet>
+	
+	<servlet-mapping>
+    	<servlet-name>XDocServlet</servlet-name>
+    	<url-pattern>/xdoc</url-pattern>
+  	</servlet-mapping>
+	
+    <servlet-mapping>
+		<servlet-name>ProcessImageServlet</servlet-name>
+		<url-pattern>/processimage</url-pattern>
+	</servlet-mapping>
+	
+    <servlet-mapping>
+		<servlet-name>SQLServlet</servlet-name>
+		<url-pattern>/pages/admin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>proxool_Admin</servlet-name>
+		<url-pattern>/proxoolAdmin</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>freemarker</servlet-name>
+		<url-pattern>*.ftl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>commQuery</servlet-name>
+		<url-pattern>/trans/CommQueryServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CommQueryInterfaceServlet</servlet-name>
+		<url-pattern>/trans/CommQueryInterfaceServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>CommQueryResultServlet</servlet-name>
+		<url-pattern>/trans/CommQueryResultServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>SystemManager</servlet-name>
+		<url-pattern>/SystemManager</url-pattern>
+	</servlet-mapping>
+
+	<mime-mapping>
+		<extension>xsd</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+	
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>
+
+	<mime-mapping>
+		<extension>xls</extension>
+		<mime-type>application/msexcel</mime-type>
+	</mime-mapping>
+	
+	<welcome-file-list>
+		<welcome-file>/pages/frame/flogin.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<jsp-config>	
+		<taglib>
+			<taglib-uri>/tags/struts-bean</taglib-uri>
+			<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-html</taglib-uri>
+			<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-logic</taglib-uri>
+			<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-template</taglib-uri>
+			<taglib-location>/WEB-INF/struts-template.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-tiles</taglib-uri>
+			<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-nested</taglib-uri>
+			<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>

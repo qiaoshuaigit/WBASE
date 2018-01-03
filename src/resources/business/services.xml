@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+  "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	
+	<bean id="com.huateng.ebank.business.common.service.DataDicService"
+		class="com.huateng.ebank.business.common.service.DataDicService">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+	
+	<bean id="com.huateng.stl4j.service.UserMangerService"
+		class="com.huateng.stl4j.service.UserMangerService">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+	
+	<bean id="com.huateng.stl4j.service.SystemParamService"
+		class="com.huateng.stl4j.service.SystemParamService">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+	
+	<bean id="com.huateng.stl4j.service.BranchInfoService"
+		class="com.huateng.stl4j.service.BranchInfoService">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="brhClassDefine">
+			<value>1,2,3,4</value>
+		</property>
+		<property name="brhClassMap">
+			<map>
+				<entry key="1"><value>总行</value></entry>
+				<entry key="2"><value>分行</value></entry>
+				<entry key="3"><value>支行</value></entry>
+				<entry key="4"><value>网点</value></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="com.huateng.stl4j.service.SuperBranchListService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<bean id="SuperBranchListServiceTarget" class="com.huateng.stl4j.service.SuperBranchListService">
+				<property name="dao">
+					<ref bean="CommonDAO" />
+				</property>
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="saveSuperBranchList">PROPAGATION_REQUIRES_NEW,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="com.huateng.stl4j.service.ErrorCodeService" class="com.huateng.stl4j.service.ErrorCodeService">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	
+	<bean id="com.huateng.ebank.business.common.service.CommonService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<bean id="CommonServiceTarget" class="com.huateng.ebank.business.common.service.CommonService">
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="oprInOutLog">PROPAGATION_REQUIRES_NEW,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="ClusterNoticeProcesser" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="myTransactionManager" />
+		</property>
+		<property name="target">
+			<bean id="ClusterNoticeProcesserTarget" class="com.huateng.ebank.business.common.ClusterNoticeProcesser">
+				<property name="dao">
+					<ref bean="CommonDAO" />
+				</property>
+			</bean>
+		</property>
+		<property name="transactionAttributes">
+			<props>
+				<prop key="sendNoticeToCluster">PROPAGATION_REQUIRES_NEW,-Exception</prop>
+				<prop key="saveReceivedClusterNotices">PROPAGATION_REQUIRES_NEW,-Exception</prop>
+				<prop key="delClusterNotices">PROPAGATION_REQUIRES_NEW,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="ScheduleInfoManager" class="com.huateng.tools.ScheduleInfoManager">
+		<property name="sysParam">
+			<ref bean="com.huateng.stl4j.service.SystemParamService" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.huateng.ebank.entity">
+	<class lazy="false" 
+		name="RoleInfo"
+		table="W_ROLE_INFO"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id name="id" type="java.lang.Integer">
+            <column name="ROLE_CODE" />
+            <generator class="assigned" />
+        </id>
+
+		<property
+			name="roleName"
+			column="ROLE_NAME"
+			type="string"
+			not-null="false"
+			length="60"
+		/>
+		<property
+			name="status"
+			column="STATUS"
+			type="string"
+			not-null="false"
+			length="1"
+		/>
+		<property
+			name="lastUpdOprno"
+			column="LAST_UPD_OPRNO"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="lastUpdTime"
+			column="LAST_UPD_TIME"
+			type="string"
+			not-null="false"
+			length="14"
+		/>
+	</class>	
+</hibernate-mapping>

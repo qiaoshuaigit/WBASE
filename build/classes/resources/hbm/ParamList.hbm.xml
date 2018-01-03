@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 日期：2013-06-19. 创建者： HDB工具(OM). 完成. -->
+<!DOCTYPE hibernate-mapping PUBLIC
+		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+		<!-- 表备注：参数列表 -->
+		<class name="com.huateng.ebank.entity.ParamList" table="W_PARAM_LIST">
+		<!-- 主键：参数KEY -->
+		<id name="paramKey" column="PARAM_KEY" type="java.lang.String">
+				<generator class="assigned" />
+		</id>
+
+		<!-- 字段意义：参数值 -->
+		<property name="paramValue" column="PARAM_VALUE" type="java.lang.String" />
+		</class>
+
+</hibernate-mapping>

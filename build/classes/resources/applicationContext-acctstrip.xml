@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- 本配置只用于错账剥离的业务处理  -->
+<beans>
+	<bean id="StripProcessor" class="com.huateng.ebank.business.common.StripProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>APS</value>
+		</property>
+	</bean>
+	
+	<bean id="IBPSStripProcessor" class="com.huateng.ebank.business.common.StripProcessor">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+		<property name="accsystemCode">
+			<value>IBPS</value>
+		</property>
+	</bean>
+
+	<bean id="StripProcessTaskMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="StripProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doStripProcess</value>
+		</property>
+	</bean>
+	
+	<bean id="IBPSStripProcessTaskMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="IBPSStripProcessor"/>
+		</property>
+		<property name="concurrent">
+			<value>false</value>
+		</property>
+		<property name="targetMethod">
+			<value>doStripProcess</value>
+		</property>
+	</bean>
+
+	<bean id="StripProcessTaskTarget" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="StripProcessTaskMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>StripProcessTaskTarget</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0/1 6-22 * * ?</value>
+       </property>
+       -->
+    </bean>
+    
+    <bean id="IBPSStripProcessTaskTarget" class="com.huateng.tools.OmCronTriggerBean">
+       <property name="jobDetail">
+           <ref bean="IBPSStripProcessTaskMethod" />
+       </property>
+       <property name="scheduleMgr">
+           <ref bean="ScheduleInfoManager" />
+       </property>
+       <property name="beanId">
+           <value>IBPSStripProcessTaskTarget</value>
+       </property>
+       <!--
+       <property name="cronExpression">
+           <value>0 0/1 6-22 * * ?</value>
+       </property>
+       -->
+    </bean>
+</beans>

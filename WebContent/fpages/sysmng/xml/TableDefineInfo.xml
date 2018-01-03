@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="数据库设计" navigate="主页 &gt; 系统管理 &gt; 数据库设计" type="call"
+	interface="true" pagesize="20" async="true" databusid="TableDefineInfo"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.TableDefineInfoGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="seqNo" desc="序号" tip="序号" edittype="text" datatype="int"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/seqNo" />
+			
+		<Field id="colName" desc="列名" tip="列名" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/colName" />
+		
+		<Field id="dataType" desc="数据类型" tip="数据类型" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/dataType" />
+			
+		<Field id="colSize" desc="长度" tip="长度" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/colSize" />
+			
+		<Field id="colDesc" desc="备注" tip="备注" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/colDesc" />
+			
+		<Field id="nullAble" desc="可空" tip="可空" edittype="text" datatype="string"
+			require="false" readonly="false" primary="false" size="60" method="None"
+			status="F" default="" xpath="/nullAble" />
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+	</Operations>
+	<Script></Script>
+</CommQry>

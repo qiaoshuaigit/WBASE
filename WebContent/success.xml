@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="操作成功" navigate="" type="call"
+	interface="false" pagesize="10" async="true" databusid="SUCCESS"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.SuccessMessageGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="message" desc="提示信息" tip="提示信息" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="200" method="None"
+			status="F" default="" xpath="/message" />			
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+	</Operations>
+	<Script></Script>
+</CommQry>

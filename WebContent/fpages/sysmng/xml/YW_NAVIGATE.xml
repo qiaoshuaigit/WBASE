@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="系统管理" navigate="主页 &gt; 系统管理 &gt; 运维管理">
+	<Include id="BankTabs" />
+	<Operations>
+		<Button id="quartzTaskTab" name="quartzTaskTab" desc="定时/轮训任务管理"
+			url="/fpages/sysmng/ftl/QuartzTaskManager.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		
+		<Button id="jvmMonitorTab" name="jvmMonitorTab" desc="JVM内存监控"
+			url="/fpages/sysmng/ftl/JvmMonitor.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		
+		<Button id="dataSourceMonitorTab" name="dataSourceMonitorTab" desc="数据库连接池监控"
+			url="/fpages/sysmng/ftl/DataSourceMonitor.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		<!--
+		<Button id="esbCheckTab" name="esbCheckTab" desc="ESB-MQ联通性检查"
+			url="/fpages/sysmng/ftl/ESB_MQ_Check.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		<Button id="txnAccountLogQueryTab" name="txnAccountLogQueryTab" desc="流水查询监控"
+			url="/fpages/sysmng/ftl/TxnAccountLogQuery.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		<Button id="txnCountTab" name="txnCountTab" desc="交易统计"
+			url="/fpages/sysmng/ftl/TxnCountQuery.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		-->
+		<Button id="oprOnlineMonitor" name="oprOnlineMonitor" desc="用户在线监控"
+			url="/fpages/sysmng/ftl/OprOnlineMonitor.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		<!--
+		<Button id="tableDefine" name="tableDefine" desc="数据库设计"
+			url="/fpages/sysmng/ftl/TableDefine.ftl" show="0"
+			group="o" txn="MSYSMOV002" />
+		-->
+	</Operations>
+	<Sql></Sql>
+	<Script></Script>
+</CommQry>

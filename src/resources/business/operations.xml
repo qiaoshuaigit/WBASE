@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" 
+  "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="com.huateng.stl4j.operation.BranchInfoOperation" class="com.huateng.stl4j.operation.BranchInfoOperation">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="com.huateng.stl4j.operation.RoleInfoOperation" class="com.huateng.stl4j.operation.RoleInfoOperation">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="com.huateng.stl4j.operation.RoleFuncRelationOperation"
+		class="com.huateng.stl4j.operation.RoleFuncRelationOperation">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="com.huateng.stl4j.operation.UserInfoOperator" class="com.huateng.stl4j.operation.UserInfoOperator">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="com.huateng.stl4j.operation.UserRoleRelationOperator"
+		class="com.huateng.stl4j.operation.UserRoleRelationOperator">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="com.huateng.stl4j.operation.ChgPasswdOperator" class="com.huateng.stl4j.operation.ChgPasswdOperator">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+
+	<bean id="com.huateng.stl4j.operation.ResetPasswdOperator" class="com.huateng.stl4j.operation.ResetPasswdOperator">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>
+	
+	<!-- 终端管理op -->
+	<bean id="com.huateng.stl4j.operation.TerminalMngOperation" class="com.huateng.stl4j.operation.TerminalMngOperation">
+		<property name="dao">
+			<ref bean="CommonDAO" />
+		</property>
+	</bean>	
+</beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="ParameterReload" navigate="主页 &gt; 系统管理 &gt; ParameterReload" type="call"
+	interface="false" pagesize="10" async="true" databusid="ParameterReload"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.ParamReloadGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<!-- status :F-基本信息中显示 N-不显示 D-详细信息中显示 A-基本、详细信息中都显示  -->
+		<!-- primary : true-作为表单项记录上传　false-不作为表单项上传 -->
+		<Field id="id" desc="ID" edittype="text" datatype="int" 
+			require="false" readonly="true" primary="true" size="10" method="None" 
+			status="F" default="" xpath="/id"/>
+			
+		<Field id="select" desc="选择" tip="选择" edittype="text" datatype="boolean"
+			require="false" readonly="false" primary="false" size="20" method="None"
+			status="F" default="" xpath="/select" />
+			
+		<Field id="magicId" desc="参数类型" tip="参数类型" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/magicId" />
+			
+		<Field id="paramValue" desc="参数名称" tip="参数名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/paramValue" />
+			
+	</Fields>
+	<Parameters>
+	</Parameters>
+	<Where>
+	</Where>
+	<Operations>
+		<!-- operation( addrecord : delrecord : syncsubmit : asysubmit : asyncqrysubmit ) -->
+		<Button id="btnSave" name="btnSave" desc="确定" operation="asysubmit"
+			url="#" updateClass="com.huateng.stl4j.updater.ParamReloadUpdater" />
+	</Operations>
+	<Script></Script>
+</CommQry>

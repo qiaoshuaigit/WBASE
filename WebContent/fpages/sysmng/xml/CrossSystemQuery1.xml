@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CommQry title="查询" navigate="主页 &gt; 查询" type="call"
+	interface="false" pagesize="20" async="true" databusid="SimpleQuery"
+	transdataactionurl="/trans/TransDataAction.do"
+	getterclassname="com.huateng.stl4j.getter.CrossSystemQueryGetter">
+	<Include id="BankParam" />
+	<Fields>
+		<Field id="fieldName" desc="字段名称" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="8" method="None"
+			status="F" default="" xpath="/fieldName" />
+
+		<Field id="fieldValue" desc="字段值" edittype="text" datatype="string"
+			require="false" readonly="true" primary="false" size="60" method="None"
+			status="F" default="" xpath="/fieldValue" />
+
+	</Fields>
+	<Parameters></Parameters>
+	<Where></Where>
+	<Operations></Operations>
+	<Script></Script>
+</CommQry>

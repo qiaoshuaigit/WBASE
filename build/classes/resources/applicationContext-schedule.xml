@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="applicationContext-clusternotice.xml" />
+	<import resource="applicationContext-bod.xml" />
+
+	<bean id="startQuerz" lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+       <property name="triggers">
+           <list>
+              <ref bean="DoClusterNoticeProcessTrigger" />
+              <ref bean="activeNoticeProcessTrigger" />
+              <ref bean="BODInitProcessorTrigger" />
+           </list>
+       </property>
+    </bean>
+    
+</beans>
